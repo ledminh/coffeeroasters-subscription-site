@@ -5,8 +5,8 @@ import Layout from '../layout';
 
 export default function About() {
   return (
-        <Layout title="Coffeeroasters subscription site">
-            About
-        </Layout>
+      <Layout title="Coffeeroasters subscription site">
+        About
+      </Layout>
   )
 };
