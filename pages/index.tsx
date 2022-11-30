@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
 import Layout from '../layout';
 
 export default function Home() {
@@ -9,4 +9,4 @@ export default function Home() {
         main body here
       </Layout>
   )
-}
+};
