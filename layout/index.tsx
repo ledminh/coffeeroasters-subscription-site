@@ -4,6 +4,7 @@ import Head from "next/head";
 import styles from './Layout.module.scss';
 import Title from '../components/Title';
 import NavBar from '../components/NavBar';
+import Header from "./Header";
 
 
 
@@ -20,10 +21,7 @@ const Layout:LayoutType  = ({children, title}) => {
                 <title>Frontend Mentor | {title}</title>
             </Head>
             <div className={styles.container}>
-                <header className={styles.header}>
-                    <Title />
-                    <NavBar/>
-                </header>
+                <Header/>
                 <main className={styles.main}>
                     {children}
                 </main>
