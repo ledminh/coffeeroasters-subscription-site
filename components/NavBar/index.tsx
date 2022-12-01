@@ -10,6 +10,7 @@ const NavBar:FunctionComponent = () => {
     return (
         <div className={styles.wrapper}>
             <button
+                className={styles.button}
                 aria-label="open navigation bar"
             >
                 <Image 
