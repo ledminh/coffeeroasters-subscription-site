@@ -1,12 +1,15 @@
 import Head from 'next/head'
 
 import styles from '../styles/About.module.scss'
-import Layout from '../layouts';
+import PageLayout from '../layouts/PageLayout';
 
 export default function About() {
   return (
-      <Layout title="Coffeeroasters subscription site">
-        About
-      </Layout>
+      <PageLayout title="Coffeeroasters subscription site">
+        <HeroImage/>
+        <OurCommitment/>
+        <Quality/>
+        <Headquarters/>
+      </PageLayout>
   )
 };
