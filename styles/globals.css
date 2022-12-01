@@ -19,27 +19,64 @@ a {
   box-sizing: border-box;
 }
 
-h1 {
+h1,h2,h3,h4 {
   font-family:  'Fraunces', serif;
-  font-size: 4.5rem;
-  line-height: 4.5rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 2.5rem;
 }
 
 h2 {
-  font-family:  'Fraunces', serif;
   font-size: 2.5rem;
   line-height: 3rem;
 }
 
 h3 {
-  font-family:  'Fraunces', serif;
   font-size: 2rem;
   line-height: 2.25rem;
 }
 
 h4 {
-  font-family:  'Fraunces', serif;
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+@media screen and (min-width: 700px) {
+  h1 {
+    font-size: 3rem;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+  }
+  
+  h3 {
+    font-size: 2rem;
+  }
+  
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+
+@media screen and (min-width: 1180px) {
+  h1 {
+    font-size: 4.5rem;
+  }
+  
+  h2 {
+    font-size: 2.5rem;
+  }
+  
+  h3 {
+    font-size: 2rem;
+  }
+  
+  h4 {
+    font-size: 1.5rem;
+  }
 }
 

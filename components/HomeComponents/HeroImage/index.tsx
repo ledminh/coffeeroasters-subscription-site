@@ -24,9 +24,11 @@ const HeroImage:FunctionComponent = () => {
             }} 
             altText="Coffee Press Hero image"
             >
-            Great Coffee made simple.
-            Start your mornings with the world’s best coffees. Try our expertly curated artisan coffees from our best roasters delivered directly to your door, at your schedule.
-            <button>Create your plan</button>
+                <div className={styles.wrapper}>
+                    <h1 className={styles.title}>Great coffee made simple.</h1>
+                    <div>Start your mornings with the world’s best coffees. Try our expertly curated artisan coffees from our best roasters delivered directly to your door, at your schedule.</div>
+                    <button>Create your plan</button>
+                </div>
         </HeroLayout>
     )
 } 
