@@ -12,6 +12,7 @@ export default function Home() {
         <OurCollection/>
         <WhyChooseUs/>
         <HowItWorks/>
+        <button>Create your plan</button>
       </PageLayout>
   )
 };
