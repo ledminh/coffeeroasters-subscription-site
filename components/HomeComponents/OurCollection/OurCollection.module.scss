@@ -8,8 +8,8 @@
     background-image: 
     linear-gradient(180deg, black, #FEFCF7);    
     background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
+
+    background-clip: text;
     -webkit-text-fill-color: transparent; 
     -moz-text-fill-color: transparent;
     

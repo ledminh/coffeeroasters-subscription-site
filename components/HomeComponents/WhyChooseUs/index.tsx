@@ -46,10 +46,10 @@ const WhyChooseUs:FunctionComponent = () => {
     return (
         <section className={styles.wrapper}>
             <div className={styles.text}>
-                <div>  Why choose us?</div>
-                <div>A large part of our role is choosing which particular coffees will be featured 
-  in our range. This means working closely with the best coffee growers to give 
-  you a more impactful experience on every level.</div>
+                <h2 className={styles.title}>Why choose us?</h2>
+                <div className={styles.content}>
+                    A large part of our role is choosing which particular coffees will be featured in our range. This means working closely with the best coffee growers to give you a more impactful experience on every level.
+                </div>
             </div>
             <div className={styles.reasons}>
                 {
