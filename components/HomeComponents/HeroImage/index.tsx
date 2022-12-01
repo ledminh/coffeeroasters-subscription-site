@@ -2,8 +2,6 @@ import { FunctionComponent } from "react";
 
 import styles from './HeroImage.module.scss';
 
-import Image from "next/image";
-
 import heroCoffeePressJPG_mobile from '../../../assets/images/home/mobile/image-hero-coffeepress.jpg';
 import heroCoffeePressJPG_tablet from '../../../assets/images/home/tablet/image-hero-coffeepress.jpg';
 import heroCoffeePressJPG_desktop from '../../../assets/images/home/desktop/image-hero-coffeepress.jpg';
