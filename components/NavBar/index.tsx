@@ -15,7 +15,7 @@ const NavBar:FunctionComponent = () => {
             >
                 <Image 
                     src={iconHamburgerSVG}
-                    alt="Open Navigation Bar"
+                    alt="Open Navigation Bar"    
                 />
             </button>
         </div>

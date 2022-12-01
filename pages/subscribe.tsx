@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import styles from '../styles/Subscribe.module.scss'
-import Layout from '../layout';
+import Layout from '../layouts';
 
 export default function Subscribe() {
   return (

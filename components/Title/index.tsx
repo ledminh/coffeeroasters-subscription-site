@@ -13,6 +13,7 @@ const Title:FunctionComponent = () => {
                 src={logoSVG}
                 alt="coffeeroasters logo"
                 fill={true}
+                sizes='8.75rem'
             />
         </div>
     )

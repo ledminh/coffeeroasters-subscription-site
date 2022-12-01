@@ -1,16 +1,15 @@
 import { FC, ReactNode } from "react";
 import Head from "next/head";
 
-import styles from './Layout.module.scss';
-import Title from '../components/Title';
-import NavBar from '../components/NavBar';
+import styles from './PageLayout.module.scss';
+
 import Header from "./Header";
 
 
 
-type LayoutType = FC<{children:ReactNode, title: string}>;
+type PageLayoutType = FC<{children:ReactNode, title: string}>;
 
-const Layout:LayoutType  = ({children, title}) => {
+const PageLayout:PageLayoutType  = ({children, title}) => {
 
     return (
         <>
@@ -32,4 +31,4 @@ const Layout:LayoutType  = ({children, title}) => {
     )
 }
 
-export default Layout;
+export default PageLayout;
