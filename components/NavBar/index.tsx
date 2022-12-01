@@ -1,23 +1,16 @@
 import { FunctionComponent } from "react";
 
 import styles from './NavBar.module.scss';
-import Image from "next/image";
-import iconHamburgerSVG from '../../assets/images/shared/mobile/icon-hamburger.svg';
+import NavScreen from "./NavScreen";
 
+import ToggleButton from "./ToggleButton";
 
 const NavBar:FunctionComponent = () => {
 
     return (
         <div className={styles.wrapper}>
-            <button
-                className={styles.button}
-                aria-label="open navigation bar"
-            >
-                <Image 
-                    src={iconHamburgerSVG}
-                    alt="Open Navigation Bar"    
-                />
-            </button>
+            <ToggleButton/>
+            {/* <NavScreen/> */}
         </div>
     )
 }
