@@ -56,7 +56,7 @@ const OurCollection:FunctionComponent = () => {
 
     return (
         <section className={styles.wrapper}>
-            <h1>Our Collection</h1>
+            <div className={styles.title}><h1>our collection</h1></div>
             {
                 items.map(item => (
                             <Item
