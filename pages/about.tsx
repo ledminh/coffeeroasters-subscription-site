@@ -1,12 +1,20 @@
 import Head from 'next/head'
 
 import styles from '../styles/About.module.scss'
-import Layout from '../layouts';
+import PageLayout from '../layouts/PageLayout';
+
+import HeroImage from '../components/AboutComponents/HeroImage';
+import OurCommitment from '../components/AboutComponents/OurCommitment';
+import Quality from '../components/AboutComponents/Quality';
+import Headquarters from '../components/AboutComponents/Headquarters';
 
 export default function About() {
   return (
-      <Layout title="Coffeeroasters subscription site">
-        About
-      </Layout>
+      <PageLayout title="Coffeeroasters subscription site">
+        <HeroImage/>
+        <OurCommitment/>
+        <Quality/>
+        <Headquarters/>
+      </PageLayout>
   )
 };
