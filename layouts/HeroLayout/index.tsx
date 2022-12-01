@@ -31,7 +31,7 @@ const HeroLayout:HeroLayoutType = ({heights,images, altText, children}) => {
 
     return (
         <>
-            <div className={`${styles.wrapper} ${styles.mobile}`}
+            <section className={`${styles.wrapper} ${styles.mobile}`}
                 style={{
                     height: heights.mobile
                 }}
@@ -49,9 +49,9 @@ const HeroLayout:HeroLayoutType = ({heights,images, altText, children}) => {
                 <div className={styles.content}>
                     {children}
                 </div>
-            </div>
+            </section>
 
-            <div className={`${styles.wrapper} ${styles.tablet}`}
+            <section className={`${styles.wrapper} ${styles.tablet}`}
                 style={{
                     height: heights.tablet
                 }}
@@ -69,9 +69,9 @@ const HeroLayout:HeroLayoutType = ({heights,images, altText, children}) => {
                 <div className={styles.content}>
                     {children}
                 </div>
-            </div>
+            </section>
 
-            <div className={`${styles.wrapper} ${styles.desktop}`}
+            <section className={`${styles.wrapper} ${styles.desktop}`}
                 style={{
                     height: heights.desktop
                 }}
@@ -89,7 +89,7 @@ const HeroLayout:HeroLayoutType = ({heights,images, altText, children}) => {
                 <div className={styles.content}>
                     {children}
                 </div>
-            </div>
+            </section>
         </>
         
     )

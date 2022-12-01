@@ -4,6 +4,8 @@
     border-radius: 10px;
 
     overflow: hidden;
+
+    margin-bottom: 120px;
 }
 
 .content {
@@ -28,6 +30,10 @@
 }
 
 @media screen and (min-width: 700px) {
+    .wrapper{
+        margin-bottom: 144px;
+    }
+    
     .wrapper.mobile {
         display: none;
     }
