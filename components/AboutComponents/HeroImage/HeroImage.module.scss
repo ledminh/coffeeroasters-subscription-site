@@ -4,14 +4,55 @@
     height: 100%;
 
     display: flex;
+    flex-flow:row nowrap;
+
+}
+
+.content {
+
+    display: flex;
     flex-flow: row wrap;
 
     justify-content: center;
     align-content: center;
 
     text-align: center;
+
+    padding: 1.5rem;
+
+    color: base.$lightCream;
+
 }
 
-.title {
-    color: base.$lightCream;
+.wedge {
+    display: none;
+}
+
+
+@media screen and (min-width: 700px) {
+    .content {
+        justify-content: left;
+        text-align: left;
+
+        padding-left: 3.625rem;
+    }
+
+    .wedge {
+        display: inline-block;
+        width: 1000px;
+        clip-path: polygon(53.86% 9.5%, 82.04% 1.5%, 100% 43%, 94% 78%, 72.34% 100.25%, 57.08% 95.75%, 25.77% 77.00%, 17.36% 46%, 35.81% 18.25%);
+    }
+}
+
+
+@media screen and (min-width: 1180px) {
+    .content {
+        padding-left: 5.31rem;
+    }
+
+    .wedge {
+        width: 2000px;
+
+        clip-path: polygon(53.86% 9.5%, 82.04% 1.5%, 100% 43%, 94% 78%, 72.34% 100.25%, 57.08% 95.75%, 25.77% 77%, 17.36% 46%, 35.81% 18.25%);
+    }
 }
