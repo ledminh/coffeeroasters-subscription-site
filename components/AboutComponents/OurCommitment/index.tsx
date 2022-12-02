@@ -3,14 +3,33 @@ import { FunctionComponent } from "react";
 import styles from './OurCommitment.module.scss';
 import Image from "next/image";
 
+import commitmentJPG_mobile from '../../../assets/images/about/mobile/image-commitment.jpg';
+import commitmentJPG_tablet from '../../../assets/images/about/tablet/image-commitment.jpg';
+import commitmentJPG_desktop from '../../../assets/images/about/desktop/image-commitment.jpg';
+
 const OurCommitment:FunctionComponent = () => {
 
     return (
         <section className={styles.wrapper}>
-            <div className={styles.image}>
+            <div className={`${styles.image} ${styles.mobile}`}>
                 <Image 
-                    src=""
-                    alt="image"
+                    src={commitmentJPG_mobile}
+                    alt="our commitment photo"
+                    placeholder="blur"
+                />
+            </div>
+            <div className={`${styles.image} ${styles.tablet}`}>
+                <Image 
+                    src={commitmentJPG_tablet}
+                    alt="our commitment photo"
+                    placeholder="blur"
+                />
+            </div>
+            <div className={`${styles.image} ${styles.desktop}`}>
+                <Image 
+                    src={commitmentJPG_desktop}
+                    alt="our commitment photo"
+                    placeholder="blur"
                 />
             </div>
             <div className={styles.text}>

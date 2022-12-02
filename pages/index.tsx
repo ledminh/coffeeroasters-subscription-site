@@ -8,7 +8,7 @@ import CreateYourPlanButton from '../components/CreateYourPlanButton';
 
 export default function Home() {
   return (
-      <PageLayout title="Coffeeroasters subscription site">
+      <PageLayout>
         <HeroImage/>
         <OurCollection/>
         <WhyChooseUs/>

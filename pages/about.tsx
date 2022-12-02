@@ -10,7 +10,7 @@ import Headquarters from '../components/AboutComponents/Headquarters';
 
 export default function About() {
   return (
-      <PageLayout title="Coffeeroasters subscription site">
+      <PageLayout>
         <HeroImage/>
         <OurCommitment/>
         <Quality/>

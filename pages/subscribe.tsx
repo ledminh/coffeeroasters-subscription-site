@@ -1,12 +1,12 @@
 import Head from 'next/head'
 
 import styles from '../styles/Subscribe.module.scss'
-import Layout from '../layouts';
+import PageLayout from '../layouts/PageLayout';
 
 export default function Subscribe() {
   return (
-        <Layout title="Coffeeroasters subscription site">
+        <PageLayout>
             Subscribe
-        </Layout>
+        </PageLayout>
   )
 };
