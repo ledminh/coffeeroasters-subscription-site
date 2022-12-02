@@ -1,15 +1,43 @@
 .wrapper {
-    text-align: center;
-
     background-color: #2C343E;
+
+    display: grid;
+    justify-items: center;
 }
 
 
 .logo {
-    height: 1rem;
-    width: 8.75rem;
+    height: 24px;
+    width: 217.85px;
 
 
     position: relative;
 
+}
+
+.nav {
+    text-align: center;
+    color: #83888F;
+    ul {
+        list-style: none;
+    }
+
+}
+
+.socialLinks {
+    ul {
+        list-style: none;
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    li {
+        position: relative;
+        
+        width: 1.5rem;
+        height: 1.5rem;
+    }
 }
