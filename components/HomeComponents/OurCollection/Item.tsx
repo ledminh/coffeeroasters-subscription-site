@@ -2,7 +2,6 @@ import Image, { StaticImageData } from "next/image";
 import { FunctionComponent } from "react";
 
 import styles from './Item.module.scss';
-
 /**************************
  *  Types
  */
