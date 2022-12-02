@@ -7,14 +7,58 @@ import coffeeBeanSVG from '../../../assets/images/home/desktop/icon-coffee-bean.
 import giftSVG from '../../../assets/images/home/desktop/icon-gift.svg';
 import truckSVG from '../../../assets/images/home/desktop/icon-truck.svg';
 
+
+
+/******************************
+ *  Main Component
+ */
+const WhyChooseUs:FunctionComponent = () => {
+
+    return (
+        <section className={styles.wrapper}>
+            <Text />
+            <div className={styles.reasons}>
+                <div className={styles.background} />
+                <div className={styles.content}>
+                    {
+                        reasons.map(r => (
+                            <div className={styles.reason}
+                                key = {r.name}
+                            >
+                                <div className={styles.image}>
+                                    <Image 
+                                        src={r.image}
+                                        alt={r.description}
+                                    />
+                                </div>
+                                <div className={styles.reasonText}>
+                                    <div>{r.name}</div>
+                                    <div>{r.description}</div>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+            
+    )
+}
+
+export default WhyChooseUs;
+
+
 /******************************
  *  Types
  */
-type ReasonData = {
+ type ReasonData = {
     name: string,
     description: string,
     image: StaticImageData
 }
+
+
+
 
 /******************************
  *  Private properties
@@ -39,41 +83,16 @@ const reasons: ReasonData[] = [
 
 
 /******************************
- *  Main Component
+ *  Other Components
  */
-const WhyChooseUs:FunctionComponent = () => {
 
-    return (
-        <section className={styles.wrapper}>
-            <div className={styles.text}>
-                <h2 className={styles.title}>Why choose us?</h2>
-                <div className={styles.content}>
-                    A large part of our role is choosing which particular coffees will be featured in our range. This means working closely with the best coffee growers to give you a more impactful experience on every level.
-                </div>
-            </div>
-            <div className={styles.reasons}>
-                {
-                    reasons.map(r => (
-                        <div className={styles.reason}
-                            key = {r.name}
-                        >
-                            <div className={styles.image}>
-                                <Image 
-                                    src={r.image}
-                                    alt={r.description}
-                                />
-                            </div>
-                            <div className={styles.reasonText}>
-                                <div>{r.name}</div>
-                                <div>{r.description}</div>
-                            </div>
-                        </div>
-                    ))
-                }
-            </div>
-        </section>
-            
-    )
-}
-
-export default WhyChooseUs;
+const Text:FunctionComponent = () => (
+    <div className={styles.text}>
+        <h2 className={styles.title}>
+            Why choose us?
+        </h2>
+        <div className={styles.content}>
+            A large part of our role is choosing which particular coffees will be featured in our range. This means working closely with the best coffee growers to give you a more impactful experience on every level.
+        </div>
+    </div>
+)
