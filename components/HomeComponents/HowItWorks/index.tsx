@@ -1,5 +1,33 @@
 import { FunctionComponent } from "react";
 
+import styles from './HowItWorks.module.scss';
+import Step from "./Step";
+
+/***************************
+ * Main Component
+ */
+ const HowItWorks:FunctionComponent = () => {
+
+
+    return (
+        <section className={styles.wrapper}>
+            <h3 className={styles.title}>How it works?</h3>
+            {
+                stepsData.map(step => (
+                    <Step 
+                        key={step.name}
+                        name={step.name}
+                        description={step.description}
+                    />
+                ))
+            }
+        </section>
+    )
+}
+
+export default HowItWorks;
+
+
 
 /***************************
  * Types
@@ -28,25 +56,3 @@ const stepsData:StepDataType[] = [
 ]
 
 
-/***************************
- * Main Component
- */
-const HowItWorks:FunctionComponent = () => {
-
-
-    return (
-        <section>
-            <div>How it works?</div>
-            {
-                stepsData.map(step => (
-                    <div key={step.name}>
-                        <div>{step.name}</div>
-                        <div>{step.description}</div>
-                    </div>
-                ))
-            }
-        </section>
-    )
-}
-
-export default HowItWorks;
