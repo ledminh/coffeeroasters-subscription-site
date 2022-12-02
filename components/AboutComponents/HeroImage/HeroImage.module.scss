@@ -1,0 +1,17 @@
+@use '../../../styles/base';
+
+.wrapper {
+    height: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+
+    justify-content: center;
+    align-content: center;
+
+    text-align: center;
+}
+
+.title {
+    color: base.$lightCream;
+}
