@@ -10,10 +10,35 @@ import danchePNG from '../../../assets/images/home/desktop/image-danche.png';
 
 import styles from './OurCollection.module.scss';
 
+
+/************************
+ * MainComponent
+ */
+const OurCollection:FunctionComponent = () => {
+
+    return (
+        <section className={styles.wrapper}>
+            <Title/>
+            {
+                items.map(item => (
+                            <Item
+                                key={item.name}
+                                name={item.name}
+                                description={item.description}
+                                image={item.image}
+                            />))
+            }
+        </section>
+    );
+}
+
+export default OurCollection;
+
+
 /************************
  * Types
  */
-type ItemDataType = {
+ type ItemDataType = {
     name:string,
     description:string,
     image: StaticImageData
@@ -23,6 +48,13 @@ type ItemDataType = {
 /************************
  * Private properties
  */
+
+const Title:FunctionComponent = () => (
+    <div className={styles.title}>
+        <h1>our collection</h1>
+    </div>
+);
+
 
 const items:ItemDataType[] = [
     {
@@ -47,27 +79,3 @@ const items:ItemDataType[] = [
     }
     
 ]
-
-
-/************************
- * MainComponent
- */
-const OurCollection:FunctionComponent = () => {
-
-    return (
-        <section className={styles.wrapper}>
-            <div className={styles.title}><h1>our collection</h1></div>
-            {
-                items.map(item => (
-                            <Item
-                                key={item.name}
-                                name={item.name}
-                                description={item.description}
-                                image={item.image}
-                            />))
-            }
-        </section>
-    );
-}
-
-export default OurCollection;

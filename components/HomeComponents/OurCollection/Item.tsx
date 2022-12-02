@@ -19,6 +19,12 @@ const Item:ItemType = ({name,description,image}) => {
                 <Image
                     src={image}
                     alt={name}
+                    fill
+                    sizes="100%"
+                    style={{
+                        objectFit: 'cover'
+                    }}
+                    placeholder='blur'
                 />
             </div>
             <div className={styles.text}>
