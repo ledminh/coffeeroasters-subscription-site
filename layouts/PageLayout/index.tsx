@@ -4,8 +4,7 @@ import Head from "next/head";
 import styles from './PageLayout.module.scss';
 
 import Header from "./Header";
-
-
+import Footer from './Footer';
 
 type PageLayoutType = FC<{children:ReactNode, title: string}>;
 
@@ -24,7 +23,7 @@ const PageLayout:PageLayoutType  = ({children, title}) => {
                 <main className={styles.main}>
                     {children}
                 </main>
-                <footer className={styles.footer}>This is footer</footer>
+                <Footer/>
             </div>    
         </>
 
