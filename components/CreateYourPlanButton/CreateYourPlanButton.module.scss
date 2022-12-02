@@ -1,0 +1,29 @@
+@use '../../styles/base';
+
+.wrapper {
+    background-color: #0E8784;
+    font-size: 1.125rem;
+    font-weight: 900;
+    line-height: 1.5625rem;
+
+    font-family:  'Fraunces', serif;
+
+    width: 217px;
+    height: 56px;
+    border-radius: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    color: base.$lightCream;
+
+    border: none;
+
+    &:hover {
+        background-color: #66D2CF;
+    }
+
+}

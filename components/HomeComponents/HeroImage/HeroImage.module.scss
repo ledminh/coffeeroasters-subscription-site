@@ -10,8 +10,16 @@
     align-content: center;
 
     text-align: center;
+
+    color: base.$lightCream;
+
+    margin: 0 1.5rem;
 }
 
 .title {
-    color: base.$lightCream;
+    margin-bottom: 1.5rem;
+}
+
+.content {
+    margin-bottom: 2.4375rem;
 }
