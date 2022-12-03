@@ -26,13 +26,16 @@ const HeroImage:FunctionComponent = () => {
             altText="Coffee Press Hero image"
             >
                 <div className={styles.wrapper}>
-                    <h1 className={styles.title}>
-                        Great coffee made simple.
-                    </h1>
                     <div className={styles.content}>
-                        Start your mornings with the world’s best coffees. Try our expertly curated artisan coffees from our best roasters delivered directly to your door, at your schedule.
+                        <h1 className={styles.title}>
+                            Great coffee made simple.
+                        </h1>
+                        <div className={styles.body}>
+                            Start your mornings with the world’s best coffees. Try our expertly curated artisan coffees from our best roasters delivered directly to your door, at your schedule.
+                        </div>
+                        <CreateYourPlanButton/>
                     </div>
-                    <CreateYourPlanButton/>
+                    <div className={styles.wedge}/>
                 </div>
         </HeroLayout>
     )
