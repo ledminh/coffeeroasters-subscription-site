@@ -28,8 +28,8 @@ const Item:ItemType = ({name,description,image}) => {
                 />
             </div>
             <div className={styles.text}>
-                <div>{name}</div>
-                <div>{description}</div>
+                <h3 className={styles.title}>{name}</h3>
+                <div className={styles.description}>{description}</div>
             </div>
         </div>
     );
