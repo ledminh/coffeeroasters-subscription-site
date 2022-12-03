@@ -3,6 +3,9 @@ import { FunctionComponent } from "react";
 
 import styles from './WhyChooseUs.module.scss';
 
+import Text from "./Text";
+import Reason, { ReasonData } from "./Reason";
+
 import coffeeBeanSVG from '../../../assets/images/home/desktop/icon-coffee-bean.svg';
 import giftSVG from '../../../assets/images/home/desktop/icon-gift.svg';
 import truckSVG from '../../../assets/images/home/desktop/icon-truck.svg';
@@ -22,20 +25,12 @@ const WhyChooseUs:FunctionComponent = () => {
                 <div className={styles.content}>
                     {
                         reasons.map(r => (
-                            <div className={styles.reason}
-                                key = {r.name}
-                            >
-                                <div className={styles.image}>
-                                    <Image 
-                                        src={r.image}
-                                        alt={r.description}
-                                    />
-                                </div>
-                                <div className={styles.reasonText}>
-                                    <div>{r.name}</div>
-                                    <div>{r.description}</div>
-                                </div>
-                            </div>
+                            <Reason 
+                                key={r.name}
+                                name={r.name}
+                                image={r.image}
+                                description={r.description}
+                            />
                         ))
                     }
                 </div>
@@ -48,14 +43,7 @@ const WhyChooseUs:FunctionComponent = () => {
 export default WhyChooseUs;
 
 
-/******************************
- *  Types
- */
- type ReasonData = {
-    name: string,
-    description: string,
-    image: StaticImageData
-}
+
 
 
 
@@ -80,19 +68,3 @@ const reasons: ReasonData[] = [
         image: truckSVG
     }
 ]
-
-
-/******************************
- *  Other Components
- */
-
-const Text:FunctionComponent = () => (
-    <div className={styles.text}>
-        <h2 className={styles.title}>
-            Why choose us?
-        </h2>
-        <div className={styles.content}>
-            A large part of our role is choosing which particular coffees will be featured in our range. This means working closely with the best coffee growers to give you a more impactful experience on every level.
-        </div>
-    </div>
-)
