@@ -2,9 +2,15 @@
     position: absolute;
     top: 5.625rem;
     left: 0;
-    width: 100%;
-    height: 100%;
+    bottom: 0;
+    right: 0;
+ 
+    display: flex;
 
+    flex-flow: column nowrap;
+    justify-items: flex-start;
+
+    
 
     z-index: 100;
 }
@@ -15,5 +21,22 @@
     min-width: 327px;
     margin: auto;
 
-    background-color: bisque;
+
+    background-color: rgb(254, 252, 247);
+}
+
+.ul {
+    list-style: none;
+    text-align: center;
+
+    color: #333D4B;
+    li {
+        margin-bottom: 2rem;
+    }
+
+}
+
+.footer {
+    background: linear-gradient(180deg, #FEFCF7 0%,  rgba(254, 252, 247, 0.504981) 99%);
+    height: 100%;
 }
