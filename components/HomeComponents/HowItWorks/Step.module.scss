@@ -20,3 +20,41 @@
     color: #333D4B;
     margin-bottom: 1.5rem;
 }
+
+@media screen and (min-width: 700px) {
+    .wrapper {
+        position: relative;
+
+        text-align: left;
+        
+        padding-left: 0.625rem;
+        padding-top: 3rem;
+        border-top: 2px solid #FDD6BA;
+    
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            border-top: 2px solid #FEFCF7;
+        }
+        
+        &::before {
+            content: "";
+            position: absolute;
+            top: calc(-3rem + 29.5px);
+            left: -0.625rem;
+            background-color:#FEFCF7;
+
+            border: 2px solid #0E8784;
+            border-radius: 50%;
+            width: 31px;
+            height: 31px;
+        }
+    }
+}
+
+
+@media screen and (min-width: 1180px) {
+    
+}

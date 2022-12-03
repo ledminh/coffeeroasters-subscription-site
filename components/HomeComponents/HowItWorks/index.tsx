@@ -12,16 +12,18 @@ import Step from "./Step";
     return (
         <section className={styles.wrapper}>
             <h3 className={styles.title}>How it works?</h3>
-            {
-                stepsData.map((step, i) => (
-                    <Step 
-                        key={step.name}
-                        order={i + 1}
-                        name={step.name}
-                        description={step.description}
-                    />
-                ))
-            }
+            <div className={styles.steps}>
+                {
+                    stepsData.map((step, i) => (
+                        <Step 
+                            key={step.name}
+                            order={i + 1}
+                            name={step.name}
+                            description={step.description}
+                        />
+                    ))
+                }
+            </div>
         </section>
     )
 }

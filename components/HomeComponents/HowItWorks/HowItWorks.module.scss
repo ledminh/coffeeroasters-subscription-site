@@ -9,3 +9,21 @@
     color: base.$grey;
     margin-bottom: 5rem;
 }
+
+@media screen and (min-width: 700px) {
+    .title {
+        text-align: left;
+    }
+
+
+    .steps {
+        display: flex;
+        flex-flow: row nowrap;
+
+    }
+}
+
+
+@media screen and (min-width: 1180px) {
+    
+}
