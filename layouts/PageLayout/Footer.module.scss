@@ -3,6 +3,10 @@
 
     display: grid;
     justify-items: center;
+    
+    gap: 3rem;
+
+    padding: 3.4376rem 0; 
 }
 
 
@@ -18,8 +22,23 @@
 .nav {
     text-align: center;
     color: #83888F;
+
     ul {
         list-style: none;
+        display: flex;
+        flex-flow: row wrap;
+        gap: 1.5rem;
+    }
+
+    li {
+        flex-basis: 100%;
+        font-weight: 700;
+
+        
+
+        &:hover {
+            color: #FEFCF7;
+        }
     }
 
 }

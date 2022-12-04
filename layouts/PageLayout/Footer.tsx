@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react"
 
 import Image from "next/image";
+import Link from "next/link";
 
 import styles from './Footer.module.scss';
 import logoSVG from '../../assets/images/shared/desktop/logo-footer.svg';
@@ -21,9 +22,9 @@ const Footer:FunctionComponent = () => {
             <Logo />
             <nav className={styles.nav}>
                 <ul>
-                    <li>Home</li>
-                    <li>About us</li>
-                    <li>Create your plan</li>
+                    <li><Link href='/'>HOME</Link></li>
+                    <li><Link href='/about'>ABOUT US</Link></li>
+                    <li><Link href='/subscribe'>CREATE YOUR PLAN</Link></li>
                 </ul>
             </nav>
             <SocialLinks/>
@@ -44,7 +45,8 @@ const Logo:FunctionComponent = () => {
             <Image 
                 src={logoSVG}
                 alt="coffeeroasters logo"
-                
+                fill
+                sizes="217px"
             />
         </div>
     )
