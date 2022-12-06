@@ -26,14 +26,37 @@ const HeroImage:FunctionComponent = () => {
             altText="White Cup Hero image"
             >
                 <div className={styles.wrapper}>
-                    <div className={styles.content}>
-                        <h1 className={styles.title}>About us</h1>
-                        <div>Coffeeroasters began its journey of exotic discovery in 1999, highlighting stories of coffee from around the world. We have since been dedicated to bring the perfect cup - from bean to brew - in every shipment.</div>
-                    </div>
+                    <h1 className={styles.title}>About us</h1>
                     <div className={styles.wedge}/>
+                    <p>Coffeeroasters began its journey of exotic discovery in 1999, highlighting stories of coffee from around the world. We have since been dedicated to bring the perfect cup - from bean to brew - in every shipment.</p>
                 </div>
         </HeroLayout>
     )
+
+    
+    // return (
+    //     <HeroLayout 
+    //         heights={{
+    //             mobile: '400px',
+    //             tablet: '400px',
+    //             desktop: '450px'
+    //         }}
+    //         images={{
+    //             mobile: heroWhitecupJPG_mobile,
+    //             tablet: heroWhitecupJPG_tablet,
+    //             desktop: heroWhitecupJPG_desktop
+    //         }} 
+    //         altText="White Cup Hero image"
+    //         >
+    //             <div className={styles.wrapper}>
+    //                 <div className={styles.content}>
+    //                     <h1 className={styles.title}>About us</h1>
+    //                     <div>Coffeeroasters began its journey of exotic discovery in 1999, highlighting stories of coffee from around the world. We have since been dedicated to bring the perfect cup - from bean to brew - in every shipment.</div>
+    //                 </div>
+    //                 <div className={styles.wedge}/>
+    //             </div>
+    //     </HeroLayout>
+    // )
 } 
 
 
