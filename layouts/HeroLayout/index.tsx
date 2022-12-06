@@ -40,7 +40,6 @@ const HeroLayout:HeroLayoutType = ({heights,images, altText, children}) => {
                     src={images.mobile}
                     alt={altText}
                     fill
-                    sizes="100%"
                     style={{
                         objectFit: 'cover'
                     }}
@@ -60,7 +59,6 @@ const HeroLayout:HeroLayoutType = ({heights,images, altText, children}) => {
                     src={images.tablet}
                     alt={altText}
                     fill
-                    sizes="100%"
                     style={{
                         objectFit: 'cover'
                     }}
@@ -80,7 +78,6 @@ const HeroLayout:HeroLayoutType = ({heights,images, altText, children}) => {
                     src={images.desktop}
                     alt={altText}
                     fill
-                    sizes="100%"
                     style={{
                         objectFit: 'cover'
                     }}
