@@ -18,8 +18,10 @@
 
 .body {
      text-align: center;
-     margin-bottom: 7.5rem;
+     margin-bottom: calc(7.5rem + 23.7vw);
 }
+
+
 .mobile {
     display: block;
 }
