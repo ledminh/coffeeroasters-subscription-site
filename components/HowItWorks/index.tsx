@@ -4,14 +4,23 @@ import styles from './HowItWorks.module.scss';
 import Step from "./Step";
 
 /***************************
+ * Types
+ */
+
+type HowItWorksComponent = FunctionComponent<{showTitle: boolean, darkTheme: boolean}>;
+
+
+/***************************
  * Main Component
  */
- const HowItWorks:FunctionComponent = () => {
+ const HowItWorks:HowItWorksComponent = ({showTitle, darkTheme}) => {
 
 
     return (
-        <section className={styles.wrapper}>
-            <h3 className={styles.title}>How it works?</h3>
+        <section data-theme={darkTheme? 'dark': 'light'} className={styles.wrapper}>
+            { 
+                showTitle && <h3 className={styles.title}>How it works?</h3>
+            }
             <div className={styles.steps}>
                 {
                     stepsData.map((step, i) => (

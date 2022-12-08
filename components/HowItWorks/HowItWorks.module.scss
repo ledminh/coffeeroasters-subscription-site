@@ -1,7 +1,15 @@
-@use '../../../styles/base';
+@use '../../styles/base';
 
 .wrapper {
     margin-bottom: 4.9735rem;
+
+    border-radius: 8px;
+
+    &[data-theme=dark] {
+        background-color: #2C343E;
+        padding: 5rem 2rem;
+    }
+
 }
 
 .title {
@@ -11,6 +19,12 @@
 }
 
 @media screen and (min-width: 700px) {
+    .wrapper {
+        &[data-theme=dark] {
+            padding: 6rem 2.5rem;
+        }
+    }
+
     .title {
         text-align: left;
     }
