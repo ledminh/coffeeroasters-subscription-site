@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import styles from './Footer.module.scss';
-import logoSVG from '../../assets/images/shared/desktop/logo-footer.svg';
+import LogoSVG from '../../assets/images/shared/desktop/logo-footer.svg';
 
-import facebookSVG from '../../assets/images/shared/desktop/icon-facebook.svg';
-import instagramSVG from '../../assets/images/shared/desktop/icon-instagram.svg';
-import twitterSVG from '../../assets/images/shared/desktop/icon-twitter.svg';
+import FacebookSVG from '../../assets/images/shared/desktop/icon-facebook.svg';
+import InstagramSVG from '../../assets/images/shared/desktop/icon-instagram.svg';
+import TwitterSVG from '../../assets/images/shared/desktop/icon-twitter.svg';
 
 
 /************************
@@ -42,12 +42,7 @@ export default Footer;
 const Logo:FunctionComponent = () => {
     return (
         <div className={styles.logo}>
-            <Image 
-                src={logoSVG}
-                alt="coffeeroasters logo"
-                fill
-                sizes="217px"
-            />
+            <LogoSVG/>
         </div>
     )
 }
@@ -58,24 +53,13 @@ const SocialLinks:FunctionComponent = () => {
         <nav className={styles.socialLinks}>
             <ul>
                 <li>
-                    <Image 
-                        src={facebookSVG}
-                        alt="facebook logo"
-                        fill
-                        sizes="24px"
-                        />
+                    <FacebookSVG/>
                 </li>
                 <li>
-                    <Image 
-                        src={twitterSVG}
-                        alt="twitter logo"
-                        />
+                    <TwitterSVG/>
                 </li>
                 <li>
-                    <Image 
-                        src={instagramSVG}
-                        alt="instagram logo"
-                        />
+                    <InstagramSVG/>
                 </li>
             </ul>
         </nav>

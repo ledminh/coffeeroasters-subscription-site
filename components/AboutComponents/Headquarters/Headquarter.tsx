@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, ReactElement } from "react";
 import Image, { StaticImageData } from "next/image";
 
 
@@ -6,7 +6,7 @@ import Image, { StaticImageData } from "next/image";
  * Types 
  */
  export type HeadquarterDataType = {
-    map: StaticImageData,
+    Map: () => ReactElement,
     country: string,
     address: string,
     city: string,
@@ -16,15 +16,12 @@ import Image, { StaticImageData } from "next/image";
 
 type HeadquarterType = FunctionComponent<HeadquarterDataType>;
 
-const Headquarter:HeadquarterType = ({map, country, address, city, state, phone}) => {
+const Headquarter:HeadquarterType = ({Map, country, address, city, state, phone}) => {
 
     return (
         <>
             <div>{country}</div>
-            <Image 
-                src={map}
-                alt={`map of ${country}`}
-            />
+            <Map />
             <div>{address}</div>
             <div>{city}</div>
             <div>{state}</div>

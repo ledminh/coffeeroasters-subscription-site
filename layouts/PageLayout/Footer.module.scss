@@ -60,3 +60,35 @@
         height: 1.5rem;
     }
 }
+
+
+@media screen and (min-width: 1180px) {
+    .wrapper {
+        display: flex;
+
+        flex-flow: row nowrap;
+
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 3rem 5.3125rem;
+    }
+
+    .nav {
+        flex-basis:  60%;
+        
+        ul {
+            flex-wrap: nowrap;
+        }
+        
+        li {
+            flex-basis: 25%;
+
+            &:last-child {
+                flex-basis: 50%;
+            }
+        }
+
+
+    }
+}

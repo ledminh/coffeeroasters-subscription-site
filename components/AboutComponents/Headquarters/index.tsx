@@ -15,7 +15,7 @@ import Headquarter, {HeadquarterDataType} from './Headquarter';
  */
 const HeadQuartersData:HeadquarterDataType[] = [
     {
-        map: ukSVG,
+        Map: ukSVG,
         country: 'United Kingdom',
         address: '68 Asfordby Rd',
         city: 'Alcaston',
@@ -24,7 +24,7 @@ const HeadQuartersData:HeadquarterDataType[] = [
     },
     
     {
-        map: canadaSVG,
+        Map: canadaSVG,
         country: 'Canada',
         address: '1528 Eglinton Avenue',
         city: 'Toronto',
@@ -33,7 +33,7 @@ const HeadQuartersData:HeadquarterDataType[] = [
     },
 
     {
-        map: australiaSVG,
+        Map: australiaSVG,
         country: 'Australia',
         address: '36 Swanston Street',
         city: 'Kewell',
@@ -57,7 +57,7 @@ const Headquarters:FunctionComponent = () => {
                     HeadQuartersData.map(hq => (
                         <Headquarter 
                             key={hq.country}
-                            map={hq.map}
+                            Map={hq.Map}
                             country={hq.country}
                             address={hq.address}
                             city={hq.city}
