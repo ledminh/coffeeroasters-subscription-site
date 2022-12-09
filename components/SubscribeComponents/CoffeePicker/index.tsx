@@ -114,13 +114,11 @@ const CoffeePicker:FunctionComponent = () => {
                 ))
             }
 
-
-            {/* Order Summary
-            “I drink coffee _____, with a _____ type of bean. _____ ground ala _____, 
-            sent to me _____.”
-
-            Create my plan! */}
-
+            <div>
+                <div>Order Summary</div>
+                <p>I drink coffee _____, with a _____ type of bean. _____ ground ala _____, sent to me _____.</p>
+                <button>Create my plan</button>
+            </div>
         </div>
     )
 }
