@@ -3,9 +3,9 @@ import Head from 'next/head'
 import styles from '../styles/Subscribe.module.scss'
 import PageLayout from '../layouts/PageLayout';
 
-import HeroImage from '../components/SubcribeComponents/HeroImage';
+import HeroImage from '../components/SubscribeComponents/HeroImage';
 import HowItWorks from '../components/HowItWorks';
-import CoffeePicker from '../components/SubcribeComponents/CoffeePicker';
+import CoffeePicker from '../components/SubscribeComponents/CoffeePicker';
 
 export default function Subscribe() {
   return (
