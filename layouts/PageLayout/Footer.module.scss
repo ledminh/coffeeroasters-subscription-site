@@ -9,16 +9,6 @@
     padding: 3.4376rem 0; 
 }
 
-
-.logo {
-    height: 24px;
-    width: 217.85px;
-
-
-    position: relative;
-
-}
-
 .nav {
     text-align: center;
     color: #83888F;
@@ -28,6 +18,8 @@
         display: flex;
         flex-flow: row wrap;
         gap: 1.5rem;
+        
+        
     }
 
     li {
@@ -35,7 +27,6 @@
         font-weight: 700;
 
         
-
         &:hover {
             color: #FEFCF7;
         }
@@ -59,6 +50,8 @@
         width: 1.5rem;
         height: 1.5rem;
     }
+
+    
 }
 
 

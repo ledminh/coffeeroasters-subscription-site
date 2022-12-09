@@ -4,7 +4,7 @@
   "cssPreprocessor": "scss",
   "component": {
     "default": {
-      "path": "src/components",
+      "path": "components",
       "withLazy": false,
       "withStory": false,
       "withStyle": true,

@@ -9,6 +9,7 @@ import LogoSVG from '../../assets/images/shared/desktop/logo-footer.svg';
 import FacebookSVG from '../../assets/images/shared/desktop/icon-facebook.svg';
 import InstagramSVG from '../../assets/images/shared/desktop/icon-instagram.svg';
 import TwitterSVG from '../../assets/images/shared/desktop/icon-twitter.svg';
+import SocialIcon from "./SocialIcon";
 
 
 /************************
@@ -53,13 +54,22 @@ const SocialLinks:FunctionComponent = () => {
         <nav className={styles.socialLinks}>
             <ul>
                 <li>
-                    <FacebookSVG/>
+                    <SocialIcon
+                        Icon={FacebookSVG}
+                        link='https://www.facebook.com/'
+                    />
                 </li>
                 <li>
-                    <TwitterSVG/>
+                    <SocialIcon 
+                        Icon={TwitterSVG}
+                        link='https://twitter.com/'
+                    />
                 </li>
                 <li>
-                    <InstagramSVG/>
+                    <SocialIcon
+                        Icon={InstagramSVG}
+                        link='https://www.instagram.com/'
+                    />
                 </li>
             </ul>
         </nav>
