@@ -11,6 +11,11 @@ interface QuestionPropsType {
 
 type QuestionType = FunctionComponent<QuestionPropsType>
 
+
+
+/***************************
+ *  Main Component
+ */
 const Question:QuestionType = () => {
 
     return (

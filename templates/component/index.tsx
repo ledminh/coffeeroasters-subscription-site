@@ -11,6 +11,11 @@ interface templatenamePropsType {
 
 type templatenameType = FunctionComponent<templatenamePropsType>
 
+
+
+/***************************
+ *  Main Component
+ */
 const templatename:templatenameType = () => {
 
     return (

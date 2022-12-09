@@ -11,7 +11,7 @@
       "withTest": false,
 
       "customTemplates": {
-        "component": "templates/component/TemplateName.tsx",
+        "component": "templates/component/index.tsx",
         "style": "templates/component/TemplateName.module.scss"
       }
     },
