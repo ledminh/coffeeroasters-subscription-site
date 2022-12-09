@@ -10,7 +10,7 @@ const NavBar:FunctionComponent = () => {
     return (
         <div className={styles.wrapper}>
             <ToggleButton/>
-            {/* <NavScreen/> */}
+            <NavScreen/>
         </div>
     )
 }

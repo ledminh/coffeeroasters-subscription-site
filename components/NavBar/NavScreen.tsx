@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import Title from "../Title";
+import Link from "next/link";
 
 import styles from './NavScreen.module.scss';
 
@@ -10,9 +11,21 @@ const NavScreen:FunctionComponent = () => {
             <div className={styles.content}>
                 <nav className={styles.nav}>
                     <ul className={styles.ul}>
-                        <li><h3>Home</h3></li>
-                        <li><h3>About Us</h3></li>
-                        <li><h3>Create Your Plan</h3></li>
+                        <li>
+                            <Link href='/'>
+                                <h3>Home</h3>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href='/about'>
+                                <h3>About</h3>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/subscribe">
+                                <h3>Create Your Plan</h3>
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

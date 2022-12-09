@@ -30,8 +30,15 @@
     text-align: center;
 
     color: #333D4B;
+    
     li {
         margin-bottom: 2rem;
+
+        cursor: pointer;
+
+        &:hover {
+            color: #FDD6BA;
+        }
     }
 
 }
