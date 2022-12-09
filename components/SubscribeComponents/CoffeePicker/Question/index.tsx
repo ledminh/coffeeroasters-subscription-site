@@ -1,12 +1,15 @@
 import { FunctionComponent } from "react";
 
+import Option, { OptionPropsType } from "../Option";
+
 import styles from './Question.module.scss';
 
 /***************************
  *  Types
  */
-interface QuestionPropsType {
-
+export interface QuestionPropsType {
+    question: string,
+    options: OptionPropsType[]
 } 
 
 type QuestionType = FunctionComponent<QuestionPropsType>
@@ -16,11 +19,20 @@ type QuestionType = FunctionComponent<QuestionPropsType>
 /***************************
  *  Main Component
  */
-const Question:QuestionType = () => {
+const Question:QuestionType = ({question, options}) => {
 
     return (
         <div className={styles.wrapper}>
-            Question component
+            <h3>{question}</h3>
+            {
+                options.map(opt => (
+                    <Option 
+                        key={opt.name}
+                        name={opt.name}
+                        description={opt.description}
+                    />
+                ))
+            }
         </div>
     )
 }

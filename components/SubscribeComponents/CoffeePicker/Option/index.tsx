@@ -5,8 +5,9 @@ import styles from './Option.module.scss';
 /***************************
  *  Types
  */
-interface OptionPropsType {
-
+export interface OptionPropsType {
+    name: string,
+    description: string
 } 
 
 type OptionType = FunctionComponent<OptionPropsType>
@@ -16,11 +17,12 @@ type OptionType = FunctionComponent<OptionPropsType>
 /***************************
  *  Main Component
  */
-const Option:OptionType = () => {
+const Option:OptionType = ({name, description}) => {
 
     return (
         <div className={styles.wrapper}>
-            Option component
+            <div>{name}</div>
+            <div>{description}</div>
         </div>
     )
 }
