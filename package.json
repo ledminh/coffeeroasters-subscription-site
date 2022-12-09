@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "create-component": "npx generate-react-cli component --type=default",
+    "create-page": "npx generate-react-cli component --type=page --flat",
+    "create-layout": "npx generate-react-cli component --type=layout" 
   },
   "dependencies": {
     "@types/node": "18.11.9",
@@ -21,6 +24,7 @@
     "typescript": "4.9.3"
   },
   "devDependencies": {
-    "babel-plugin-inline-react-svg": "^2.0.1"
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "ledminh-create-react-component": "^1.0.6"
   }
 }
