@@ -1,5 +1,4 @@
 import { FunctionComponent } from "react";
-import Title from "../Title";
 import Link from "next/link";
 
 import styles from './NavScreen.module.scss';
@@ -10,7 +9,9 @@ const NavScreen:FunctionComponent = () => {
         <div className={styles.wrapper}>
             <div className={styles.content}>
                 <nav className={styles.nav}>
-                    <ul className={styles.ul}>
+                    <ul className={styles.ul}
+                        onClick={(event) => event.stopPropagation()}
+                        >
                         <li>
                             <Link href='/'>
                                 <h3>Home</h3>
