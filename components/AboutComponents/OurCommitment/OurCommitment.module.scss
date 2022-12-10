@@ -51,6 +51,7 @@
         align-items: center;
     
         gap: 4.3125rem;
+
     }
 
 
@@ -85,6 +86,10 @@
 
 
 @media screen and (min-width: 1180px) {
+    .wrapper {
+        margin-bottom: 256px;
+    }
+    
     .mobile {
         display: none;
     }
