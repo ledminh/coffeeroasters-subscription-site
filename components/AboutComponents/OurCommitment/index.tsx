@@ -11,30 +11,8 @@ const OurCommitment:FunctionComponent = () => {
 
     return (
         <section className={styles.wrapper}>
-            <div className={`${styles.image} ${styles.mobile}`}>
-                <Image 
-                    src={commitmentJPG_mobile}
-                    alt="our commitment photo"
-                    fill
-                    style={{
-                        objectFit: 'cover'
-                    }}
-                    placeholder='blur'
-                />
-            </div>
-            <div className={`${styles.image} ${styles.tablet}`}>
-                <Image 
-                    src={commitmentJPG_tablet}
-                    alt="our commitment photo"
-                    placeholder="blur"
-                />
-            </div>
-            <div className={`${styles.image} ${styles.desktop}`}>
-                <Image 
-                    src={commitmentJPG_desktop}
-                    alt="our commitment photo"
-                    placeholder="blur"
-                />
+            <div className={styles.image}>
+                <_Image />
             </div>
             <div className={styles.text}>
                 <h2 className={styles.title}>Our commitment</h2>
@@ -47,3 +25,51 @@ const OurCommitment:FunctionComponent = () => {
 }
 
 export default OurCommitment;
+
+
+
+/*********************
+ * Other Components
+ */
+const _Image:FunctionComponent = () => {
+    return (
+        <>
+            <div className={styles.mobile}>
+                <Image 
+                    src={commitmentJPG_mobile}
+                    alt="our commitment photo"
+                    fill
+                    style={{
+                        objectFit: 'cover'
+                    }}
+                    sizes="375px"
+                    placeholder='blur'
+                />
+            </div>
+            <div className={styles.tablet}>
+                <Image 
+                    src={commitmentJPG_tablet}
+                    alt="our commitment photo"
+                    fill
+                    style={{
+                        objectFit: 'cover'
+                    }}
+                    sizes="375px"
+                    placeholder="blur"
+                />
+            </div>
+            <div className={styles.desktop}>
+                <Image 
+                    src={commitmentJPG_desktop}
+                    alt="our commitment photo"
+                    fill
+                    style={{
+                        objectFit: 'cover'
+                    }}
+                    sizes="375px"
+                    placeholder="blur"
+                />
+            </div>
+        </>
+    )
+}
