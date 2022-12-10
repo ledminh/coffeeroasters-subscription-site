@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 
 import Item from './Item';
 
-import ganEspressoPNG from '../../../assets/images/home/desktop/image-gran-espresso.png';
+import granEspressoPNG from '../../../assets/images/home/desktop/image-gran-espresso.png';
 import planaltoPNG from '../../../assets/images/home/desktop/image-planalto.png';
 import piccolloPNG from '../../../assets/images/home/desktop/image-piccollo.png';
 import danchePNG from '../../../assets/images/home/desktop/image-danche.png';
@@ -19,15 +19,17 @@ const OurCollection:FunctionComponent = () => {
     return (
         <section className={styles.wrapper}>
             <Title/>
-            {
-                items.map(item => (
-                            <Item
-                                key={item.name}
-                                name={item.name}
-                                description={item.description}
-                                image={item.image}
-                            />))
-            }
+            <div className={styles.items}>
+                {
+                    items.map(item => (
+                                <Item
+                                    key={item.name}
+                                    name={item.name}
+                                    description={item.description}
+                                    image={item.image}
+                                />))
+                }
+            </div>
         </section>
     );
 }
@@ -60,7 +62,7 @@ const items:ItemDataType[] = [
     {
         name: 'Gran Espresso',
         description: 'Light and flavorful blend with cocoa and black pepper for an intense experience',
-        image: ganEspressoPNG
+        image: granEspressoPNG
     },
     {
         name: 'Planalto',

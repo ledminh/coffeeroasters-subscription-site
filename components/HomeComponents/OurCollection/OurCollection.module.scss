@@ -1,6 +1,12 @@
 .wrapper {
     margin-bottom: 7.5rem;
 
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 1.5rem;
 }
 
 .title {
@@ -16,13 +22,36 @@
 
     text-align: center;
 
+    h1 {
+        letter-spacing: .5rem;
+    }
+
 }
+
+
 
 @media screen and (min-width: 700px) {
     .wrapper{
-        margin-bottom: 9rem;
+        margin-bottom: 6.6rem;
+
+        
     }
     
+    .title {
+        background-image: 
+        linear-gradient(180deg, rgb(69, 69, 69), #FEFCF7);
+
+        h1 {
+            font-size: 6.5rem;
+            line-height: 6.5rem;
+            letter-spacing: .9rem;
+        }
+    }
+
+    .items {
+        transform: translateY(-3.4rem);
+
+    }
     
 }
 
