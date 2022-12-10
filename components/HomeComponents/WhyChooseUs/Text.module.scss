@@ -8,3 +8,16 @@
     border-top-right-radius: 10px;
 
 }
+
+.title {
+    margin-bottom: 1.5rem;
+}
+
+
+
+@media screen and (min-width: 1180px) {
+    .content {
+        width: 45%;
+        margin: auto;
+    }
+}

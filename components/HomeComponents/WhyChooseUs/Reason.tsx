@@ -1,6 +1,5 @@
 import styles from './Reason.module.scss';
 
-import Image, {StaticImageData} from 'next/image';
 import { FunctionComponent } from 'react';
 
 
@@ -10,21 +9,20 @@ import { FunctionComponent } from 'react';
 export type ReasonData = {
     name: string,
     description: string,
-    image: StaticImageData
+    Image: FunctionComponent<{alt:string}>
 }
 
 type ReasonComponent = FunctionComponent<ReasonData>;
 
 
-const Reason:ReasonComponent = ({name, description, image}) => {
+const Reason:ReasonComponent = ({name, description, Image}) => {
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.image}>
                 <Image 
-                    src={image}
-                    alt={description}
-                />
+                    alt={name}
+                    />
             </div>
             <div className={styles.text}>
                 <h3 className={styles.name}>{name}</h3>

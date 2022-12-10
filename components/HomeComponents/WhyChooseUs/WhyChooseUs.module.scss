@@ -38,12 +38,35 @@
     .wrapper {
         margin-bottom: 9rem;
     }
+
+    .reasons {
+        .background {
+            background-color: #2C343E;
+
+            height: 350px;
+        }
+    }
 }
 
 
 @media screen and (min-width: 1180px) {
     .wrapper {
         margin-bottom: 12.5rem;
+    }
+
+    .reasons {
+        .content {
+            display: flex;
+            flex-flow: row nowrap;
+
+            justify-content: space-between;
+
+        }
+
+        .background {
+            height: 280px;
+        }
+        
     }
 }
 

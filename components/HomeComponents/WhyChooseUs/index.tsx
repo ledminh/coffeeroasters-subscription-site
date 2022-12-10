@@ -6,9 +6,9 @@ import styles from './WhyChooseUs.module.scss';
 import Text from "./Text";
 import Reason, { ReasonData } from "./Reason";
 
-import coffeeBeanSVG from '../../../assets/images/home/desktop/icon-coffee-bean.svg';
-import giftSVG from '../../../assets/images/home/desktop/icon-gift.svg';
-import truckSVG from '../../../assets/images/home/desktop/icon-truck.svg';
+import CoffeeBeanSVG from '../../../assets/images/home/desktop/icon-coffee-bean.svg';
+import GiftSVG from '../../../assets/images/home/desktop/icon-gift.svg';
+import TruckSVG from '../../../assets/images/home/desktop/icon-truck.svg';
 
 
 
@@ -28,7 +28,7 @@ const WhyChooseUs:FunctionComponent = () => {
                             <Reason 
                                 key={r.name}
                                 name={r.name}
-                                image={r.image}
+                                Image={r.Image}
                                 description={r.description}
                             />
                         ))
@@ -55,16 +55,16 @@ const reasons: ReasonData[] = [
     {
         name: 'Best quality',
         description: 'Discover an endless variety of the world’s best artisan coffee from each of our roasters.',
-        image: coffeeBeanSVG
+        Image: CoffeeBeanSVG
     },
     {
         name: 'Exclusive benefits',
         description: 'Special offers and swag when you subscribe, including 30% off your first shipment.',
-        image: giftSVG
+        Image: GiftSVG
     },
     {
         name: 'Free shipping',
         description: 'We cover the cost and coffee is delivered fast. Peak freshness: guaranteed.',
-        image: truckSVG
+        Image: TruckSVG
     }
 ]

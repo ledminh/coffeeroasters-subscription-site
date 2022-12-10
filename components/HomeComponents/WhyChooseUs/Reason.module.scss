@@ -2,8 +2,6 @@
     background-color: #0E8784;
     color: #FEFCF7;
 
-    text-align: center;
-
     padding: 4.5rem 0.75rem 3rem;
     border-radius: 8px;
 
@@ -12,9 +10,62 @@
 
 .image {
     margin-bottom: 3.5rem;
+    text-align: center;
 }
 
 .name {
     margin-bottom: 1.5rem;
+
+    text-align: center;
 }
 
+.description {
+    text-align: center;
+}
+
+@media screen and (min-width: 700px) {
+    .wrapper {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        padding: 2.5625rem 4.4rem;
+
+        gap: 3.5rem;
+
+
+    }
+
+    .image {
+        margin-bottom: 0;
+
+    }
+
+    .name {
+        text-align: left;
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        text-align: left;
+    }
+}
+
+
+@media screen and (min-width: 1180px) {
+    .wrapper {
+        flex-basis: 31%;
+
+        flex-flow: column nowrap;
+    
+    }
+
+    .name {
+        text-align: center;
+    }
+
+    .description {
+        text-align: center;
+    }
+}

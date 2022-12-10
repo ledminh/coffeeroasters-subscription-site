@@ -6,6 +6,8 @@ import HowItWorks from '../components/HowItWorks';
 import CreateYourPlanButton from '../components/CreateYourPlanButton';
 
 
+import styles from '../styles/Home.module.scss';
+
 export default function Home() {
   return (
       <PageLayout>
@@ -16,7 +18,9 @@ export default function Home() {
           showTitle={true}
           darkTheme={false}
         />
-        <CreateYourPlanButton/>
+        <div className={styles.createYourPlanButton}>
+          <CreateYourPlanButton/>
+        </div>
       </PageLayout>
   )
 };
