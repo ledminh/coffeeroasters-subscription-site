@@ -4,6 +4,8 @@ import Option, { OptionPropsType } from "../Option";
 
 import styles from './Question.module.scss';
 
+import ArrowIcon from '../../../../assets/images/plan/desktop/icon-arrow.svg';
+
 /***************************
  *  Types
  */
@@ -23,7 +25,12 @@ const Question:QuestionType = ({question, options}) => {
 
     return (
         <div className={styles.wrapper}>
-            <h3>{question}</h3>
+            <div className={styles.question}>
+                <h3 className={styles.text}>{question}</h3>
+                <div className={styles.arrow}>
+                    <ArrowIcon />
+                </div>
+            </div>
             {
                 options.map(opt => (
                     <Option 

@@ -1,6 +1,7 @@
 import { FunctionComponent } from "react";
 import styles from './CoffeePicker.module.scss';
 import Question, { QuestionPropsType } from "./Question";
+import Result from "./Result";
 
 const questions:QuestionPropsType[] = [
     {
@@ -113,12 +114,8 @@ const CoffeePicker:FunctionComponent = () => {
                     />
                 ))
             }
-
-            <div>
-                <div>Order Summary</div>
-                <p>I drink coffee _____, with a _____ type of bean. _____ ground ala _____, sent to me _____.</p>
-                <button>Create my plan</button>
-            </div>
+            
+            <Result />
         </div>
     )
 }

@@ -1,0 +1,21 @@
+.wrapper {
+    border-radius: 8px;
+
+    padding: 1.5rem 1.5625rem;
+
+    margin-bottom: 16px;
+
+    background-color: #F4F1EB;
+    color: #333D4B;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: #FDD6BA;
+    }
+}
+
+.name {
+    font-weight: 900;
+}
+

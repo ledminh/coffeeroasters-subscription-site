@@ -6,6 +6,7 @@ import PageLayout from '../layouts/PageLayout';
 import HeroImage from '../components/SubscribeComponents/HeroImage';
 import HowItWorks from '../components/HowItWorks';
 import CoffeePicker from '../components/SubscribeComponents/CoffeePicker';
+import CreateMyPlanButton from '../components/CreateMyPlanButton';
 
 export default function Subscribe() {
   return (
@@ -16,7 +17,7 @@ export default function Subscribe() {
                 darkTheme={true}
               />
             <CoffeePicker/>
-            <button>Create my plan!</button>
+            <CreateMyPlanButton/>            
         </PageLayout>
   )
 };

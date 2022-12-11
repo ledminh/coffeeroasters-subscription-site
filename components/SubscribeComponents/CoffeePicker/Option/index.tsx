@@ -21,8 +21,8 @@ const Option:OptionType = ({name, description}) => {
 
     return (
         <div className={styles.wrapper}>
-            <div>{name}</div>
-            <div>{description}</div>
+            <h3 className={styles.name}>{name}</h3>
+            <div className={styles.description}>{description}</div>
         </div>
     )
 }
