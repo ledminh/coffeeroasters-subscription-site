@@ -1,0 +1,42 @@
+.smallscreen {
+  display: block;
+}
+
+.largescreen {
+    display: none;
+}
+
+.ul {
+    list-style-type: none;
+    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 2rem;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #83888F;
+
+    li {
+        cursor: pointer;
+
+        &:hover {
+            color: #333D4B;
+        }
+    }
+}
+
+
+
+@media (min-width: 768px) {
+    .smallscreen {
+        display: none;
+    }
+
+    .largescreen {
+        display: block;
+    }
+}
