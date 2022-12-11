@@ -21,7 +21,7 @@
 @media screen and (min-width: 700px) {
     .wrapper {
         &[data-theme=dark] {
-            padding: 6rem 2.5rem;
+            padding: 6rem 3.625rem;
         }
     }
 
@@ -41,6 +41,12 @@
 
 @media screen and (min-width: 1180px) {
     .wrapper {
-        margin: 0 5.3425rem;
+        &[data-theme=light] {
+            margin: 0 5.3425rem;
+        }
+
+        &[data-theme=dark] {
+            padding-left: 5.3125rem;
+        }
     }
 }
