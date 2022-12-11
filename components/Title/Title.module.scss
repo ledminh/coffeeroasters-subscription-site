@@ -1,3 +1,21 @@
+.large {
+    display: none;
+}
+
+.small {
+    display: block;
+}
+
 .wrapper {
     display: flex;
+}
+
+@media (min-width: 768px) {
+    .small {
+        display: none;
+    }
+
+    .large {
+        display: block;
+    }
 }
