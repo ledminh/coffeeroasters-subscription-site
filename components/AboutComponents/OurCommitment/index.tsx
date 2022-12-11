@@ -11,9 +11,7 @@ const OurCommitment:FunctionComponent = () => {
 
     return (
         <section className={styles.wrapper}>
-            <div className={styles.image}>
-                <_Image />
-            </div>
+            <_Image />
             <div className={styles.text}>
                 <h2 className={styles.title}>Our commitment</h2>
                 <div className={styles.body}>
@@ -34,7 +32,7 @@ export default OurCommitment;
 const _Image:FunctionComponent = () => {
     return (
         <>
-            <div className={styles.mobile}>
+            <div className={`${styles.image} ${styles.mobile}`}>
                 <Image 
                     src={commitmentJPG_mobile}
                     alt="our commitment photo"
@@ -46,7 +44,7 @@ const _Image:FunctionComponent = () => {
                     placeholder='blur'
                 />
             </div>
-            <div className={styles.tablet}>
+            <div className={`${styles.image} ${styles.tablet}`}>
                 <Image 
                     src={commitmentJPG_tablet}
                     alt="our commitment photo"
@@ -58,7 +56,7 @@ const _Image:FunctionComponent = () => {
                     placeholder="blur"
                 />
             </div>
-            <div className={styles.desktop}>
+            <div className={`${styles.image} ${styles.desktop}`}>
                 <Image 
                     src={commitmentJPG_desktop}
                     alt="our commitment photo"

@@ -43,6 +43,7 @@ const HeroLayout:HeroLayoutType = ({heights,images, altText, children}) => {
                     style={{
                         objectFit: 'cover'
                     }}
+                    sizes="600px"
                     placeholder='blur'
                 />
                 <div className={styles.content}>
@@ -62,6 +63,7 @@ const HeroLayout:HeroLayoutType = ({heights,images, altText, children}) => {
                     style={{
                         objectFit: 'cover'
                     }}
+                    sizes="600px"
                     placeholder='blur'
                 />
                 <div className={styles.content}>
@@ -81,6 +83,7 @@ const HeroLayout:HeroLayoutType = ({heights,images, altText, children}) => {
                     style={{
                         objectFit: 'cover'
                     }}
+                    sizes="600px"
                     placeholder='blur'
                 />
                 <div className={styles.content}>

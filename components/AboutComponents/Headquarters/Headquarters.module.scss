@@ -1,0 +1,21 @@
+.title {
+    color: #83888F;
+    text-align: center;
+
+    margin-bottom: 72px;
+}
+
+
+@media (min-width: 768px) {
+    .title {
+        text-align: left;
+    }
+    
+    .headquarters {
+        display: flex;
+        flex-flow: row nowrap;
+
+
+    }
+
+}

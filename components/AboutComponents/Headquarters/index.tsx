@@ -1,4 +1,3 @@
-import { StaticImageData } from "next/image";
 import { FunctionComponent } from "react";
 
 import styles from './Headquarters.module.scss';
@@ -51,7 +50,7 @@ const Headquarters:FunctionComponent = () => {
 
     return (
         <div className={styles.wrapper}>
-            <h3>Our headquarters</h3>
+            <h3 className={styles.title}>Our headquarters</h3>
             <div className={styles.headquarters}>
                 {
                     HeadQuartersData.map(hq => (
