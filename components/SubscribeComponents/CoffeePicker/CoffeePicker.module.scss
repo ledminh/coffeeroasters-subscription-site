@@ -1,3 +1,16 @@
+.wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.nav {
+    display: none;
+}
+
+
 .questions {
     margin-bottom: 114.17px;
 }
@@ -6,5 +19,16 @@
     display: flex;
     justify-content: center;
 
+}
 
+@media screen and (min-width: 1180px) {
+    .nav {
+        display: block;
+
+        margin-left: 5.3425rem;
+    }
+
+    .ul {
+        list-style: none;
+    }
 }

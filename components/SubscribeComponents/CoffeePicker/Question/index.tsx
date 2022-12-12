@@ -31,15 +31,17 @@ const Question:QuestionType = ({question, options}) => {
                     <ArrowIcon />
                 </div>
             </div>
-            {
-                options.map(opt => (
-                    <Option 
-                        key={opt.name}
-                        name={opt.name}
-                        description={opt.description}
-                    />
-                ))
-            }
+            <div className={styles.options}>
+                {
+                    options.map(opt => (
+                        <Option 
+                            key={opt.name}
+                            name={opt.name}
+                            description={opt.description}
+                        />
+                    ))
+                }
+            </div>
         </div>
     )
 }

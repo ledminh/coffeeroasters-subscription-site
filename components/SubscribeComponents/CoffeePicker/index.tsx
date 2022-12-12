@@ -100,25 +100,31 @@ const CoffeePicker:FunctionComponent = () => {
 
     return (
         <div className={styles.wrapper}>
-            {/* 01 Preferences
-            02 Bean type
-            03 Quantity
-            04 Grind option
-            05 Deliveries */}
-            <div className={styles.questions}>
-                {
-                    questions.map(q => (
-                        <Question
-                            key={q.question}
-                            question={q.question}
-                            options={q.options}
-                        />
-                    ))
-                }
-            </div>            
-            <Result />
-            <div className={styles.createMyPlanButton}>
-                <CreateMyPlanButton/>
+            <div className={styles.nav}>
+                <ul className={styles.ul}>
+                    <li>01 Preferences</li>
+                    <li>02 Bean type</li>
+                    <li>03 Quantity</li>
+                    <li>04 Grind option</li>
+                    <li>05 Deliveries</li>
+                </ul>
+            </div>
+            <div className={styles.main}>
+                <div className={styles.questions}>
+                    {
+                        questions.map(q => (
+                            <Question
+                                key={q.question}
+                                question={q.question}
+                                options={q.options}
+                            />
+                        ))
+                    }
+                </div>            
+                <Result />
+                <div className={styles.createMyPlanButton}>
+                    <CreateMyPlanButton/>
+                </div>
             </div>
         </div>
     )

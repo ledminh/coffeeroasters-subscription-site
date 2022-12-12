@@ -38,13 +38,14 @@
 @media screen and (min-width: 700px) {
     .wrapper {
         position: relative;
-
+        flex-basis: 33%;
         text-align: left;
         
         padding-right: 0.625rem;
         padding-top: 3rem;
         border-top: 2px solid #FDD6BA;
-    
+
+        
 
         &:last-child {
             border-top: 2px solid #FEFCF7;
@@ -80,11 +81,7 @@
 
 @media screen and (min-width: 1180px) {
     .wrapper {
-        padding-right: 3.5rem;
-
-        
-
-
+        padding-right: 56px;  
 
         &:last-child {
             border-top: 2px solid base.$lightCream;
@@ -92,8 +89,6 @@
             
         }
         [data-theme=dark] & {
-      
-       
             
 
             &::before {
