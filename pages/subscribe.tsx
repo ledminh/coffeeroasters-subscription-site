@@ -1,6 +1,3 @@
-import Head from 'next/head'
-
-import styles from '../styles/Subscribe.module.scss'
 import PageLayout from '../layouts/PageLayout';
 
 import HeroImage from '../components/SubscribeComponents/HeroImage';
