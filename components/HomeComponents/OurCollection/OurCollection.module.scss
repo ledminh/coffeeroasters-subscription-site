@@ -32,9 +32,7 @@
 
 @media screen and (min-width: 700px) {
     .wrapper{
-        margin-bottom: 6.6rem;
-
-        
+        margin-bottom: 6.6rem;        
     }
     
     .title {
@@ -58,7 +56,33 @@
 
 @media screen and (min-width: 1180px) {
     .wrapper {
-        margin-bottom: 12.5rem;
+        margin-bottom: 7rem;
+        padding: 0 5.31rem;
+    }
+
+    .title {
+        background-image: 
+        linear-gradient(180deg, rgb(129, 129, 129), #FEFCF7);
+
+        h1 {
+            font-size: 10rem;
+            line-height: 10rem;
+            letter-spacing: .9rem;
+        }
+    }
+
+
+    .items {
+        display: flex;
+        flex-flow: row nowrap;
+
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 30px;
+
+        transform: translateY(-5.5rem);
+
     }
 
     

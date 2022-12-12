@@ -17,7 +17,6 @@
 
 .text {
     text-align: center;
-
     color: #333D4B;
 }
 
@@ -32,7 +31,6 @@
         align-items: flex-start;
 
         gap: 3rem;
-        // border: 2px solid #333D4B;
 
     }
     
@@ -43,7 +41,6 @@
 
         width: 20%;
 
-        // border: 2px solid #333D4B;
 
     }
 
@@ -56,21 +53,43 @@
         justify-content: center;
         align-items: flex-start;
 
-        // border: 2px solid #333D4B;
-
-
     }
 
     .title {
         margin-bottom: 1.5rem;
-
         font-size: 1.8rem;
     }
-
 }
 
 
 @media screen and (min-width: 1180px) {
+    .wrapper {
+        flex-basis: 25%;
+
+        flex-flow: column nowrap;
+
+        justify-content: space-between;
+        align-items: center;
+        gap: 4.5rem;
     
-    
+    }
+
+    .image {
+        width: 180px;
+        height: 193px;
+
+        
+    }
+
+
+    .text {
+        text-align: center;
+        width: 100%;
+    }
+
+    .title {
+        width: 100%;
+    }
+
+
 }

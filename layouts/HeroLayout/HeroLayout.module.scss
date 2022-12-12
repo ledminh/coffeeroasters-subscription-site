@@ -31,7 +31,7 @@
 
 @media screen and (min-width: 700px) {
     .wrapper{
-        margin-bottom: 9rem;
+        margin-bottom: 9rem; 
     }
     
     .wrapper.mobile {
@@ -49,6 +49,9 @@
 
 
 @media screen and (min-width: 1180px) {
+    .wrapper {
+        margin-bottom: 8.5rem;
+    }
     .wrapper.mobile {
         display: none;
     }
