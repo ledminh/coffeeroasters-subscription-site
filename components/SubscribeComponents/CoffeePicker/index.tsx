@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import styles from './CoffeePicker.module.scss';
+import CreateMyPlanButton from "./CreateMyPlanButton";
 import Question, { QuestionPropsType } from "./Question";
 import Result from "./Result";
 
@@ -116,6 +117,9 @@ const CoffeePicker:FunctionComponent = () => {
                 }
             </div>            
             <Result />
+            <div className={styles.createMyPlanButton}>
+                <CreateMyPlanButton/>
+            </div>
         </div>
     )
 }

@@ -1,7 +1,12 @@
 .wrapper {
-    background-color: #2C343E;
+    background-image: url('/assets/bg-order-summary.png');
+    background-size: cover;
 
     padding: 2rem 1.5625rem;
+
+    border-radius: 8px;
+
+    margin-bottom: 56px;
 }
 
 .title {
