@@ -20,6 +20,7 @@
 @media screen and (min-width: 700px) {
     .wrapper {
         text-align: left;
+        padding-left: 3.625rem;
 
         & * {
             display: inline-block;
@@ -47,6 +48,7 @@
     .wrapper {
         padding-top: 8rem;   
         
+        padding-left: 5.3125rem; 
         p {
             width: 50%;
         }
