@@ -104,17 +104,17 @@ const CoffeePicker:FunctionComponent = () => {
             03 Quantity
             04 Grind option
             05 Deliveries */}
-
-            {
-                questions.map(q => (
-                    <Question
-                        key={q.question}
-                        question={q.question}
-                        options={q.options}
-                    />
-                ))
-            }
-            
+            <div className={styles.questions}>
+                {
+                    questions.map(q => (
+                        <Question
+                            key={q.question}
+                            question={q.question}
+                            options={q.options}
+                        />
+                    ))
+                }
+            </div>            
             <Result />
         </div>
     )
