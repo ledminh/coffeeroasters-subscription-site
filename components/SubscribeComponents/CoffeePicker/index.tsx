@@ -102,11 +102,36 @@ const CoffeePicker:FunctionComponent = () => {
         <div className={styles.wrapper}>
             <div className={styles.nav}>
                 <ul className={styles.ul}>
-                    <li>01 Preferences</li>
-                    <li>02 Bean type</li>
-                    <li>03 Quantity</li>
-                    <li>04 Grind option</li>
-                    <li>05 Deliveries</li>
+                    <li className={styles.li}>
+                        <button>
+                            <span className={styles.order}>01</span>
+                            <span className={styles.name}>Preferences</span>
+                        </button>
+                    </li>
+                    <li className={styles.li}>
+                        <button>
+                            <span className={styles.order}>02</span>
+                            <span className={styles.name}>Bean type</span>
+                        </button>
+                    </li>
+                    <li className={styles.li}>
+                        <button>
+                            <span className={styles.order}>03</span>
+                            <span className={styles.name}>Quantity</span>
+                        </button>
+                    </li>
+                    <li className={styles.li}>
+                        <button>
+                            <span className={styles.order}>04</span>
+                            <span className={styles.name}>Grind option</span>
+                        </button>
+                    </li>
+                    <li className={styles.li}>
+                        <button>
+                            <span className={styles.order}>05</span>
+                            <span className={styles.name}>Deliveries</span>
+                        </button>
+                    </li>
                 </ul>
             </div>
             <div className={styles.main}>
