@@ -59,7 +59,7 @@ export default Subscribe;
  */
 export const getServerSideProps:GetServerSideProps = async () =>{
 
-  return { props: { questions: [
+  return { props: { questionsFromServer: [
       {
         question: "How do you drink your coffee?",
         options: [

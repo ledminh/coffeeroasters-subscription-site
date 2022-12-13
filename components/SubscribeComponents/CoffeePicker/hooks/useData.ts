@@ -17,7 +17,6 @@ const useData: useDataType = (questionsFromServer) => {
     const questions = questionsFromServer;
     
     
-    
     return {
         questions
     }
