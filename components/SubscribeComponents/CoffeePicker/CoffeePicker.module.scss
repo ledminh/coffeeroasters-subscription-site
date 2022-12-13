@@ -22,10 +22,19 @@
 }
 
 @media screen and (min-width: 1180px) {
+    .wrapper {
+        margin: 0 5.3425rem;
+        
+    
+    }
     .nav {
         display: block;
 
-        margin-left: 5.3425rem;
+        flex-basis: 31%;
+    }
+
+    .main {
+        flex-basis: 65.5%;
     }
 
     .ul {
