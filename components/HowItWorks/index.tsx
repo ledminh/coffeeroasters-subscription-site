@@ -21,6 +21,11 @@ type HowItWorksComponent = FunctionComponent<{showTitle: boolean, darkTheme: boo
             { 
                 showTitle && <h3 className={styles.title}>How it works?</h3>
             }
+            <div className={styles.border}>
+                <div className={styles.bSection}/>
+                <div className={styles.bSection}/>
+                <div className={styles.bSection}/>
+            </div>
             <div className={styles.steps}>
                 {
                     stepsData.map((step, i) => (

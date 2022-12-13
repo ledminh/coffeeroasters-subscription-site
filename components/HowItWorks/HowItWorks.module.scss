@@ -20,9 +20,14 @@
     margin-bottom: 5rem;
 }
 
+.border {
+    display: none;
+}
+
 @media screen and (min-width: 700px) {
     .wrapper {
 
+        
 
         &[data-theme=dark] {
             background: url('/assets/bg-steps-tablet.png');
@@ -35,10 +40,63 @@
         text-align: left;
     }
 
+    .border {
+        display: flex;
+        flex-flow: row nowrap;
+
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        margin-bottom: 3rem;
+
+        background-color: #FDD6BA;
+    }
+
+    .bSection {
+        position: relative;
+        
+        flex-basis: 31%;
+        height: 2px;
+
+        
+
+        &:last-child {
+            background-color: base.$lightCream;
+        }
+
+
+        &::before {
+            content: "";
+            position: absolute;
+            
+            top: -15.5px;
+            border: 2px solid #0E8784;
+            border-radius: 50%;
+            width: 31px;
+            height: 31px;
+
+            background-color: #FEFCF7;
+        }
+
+        [data-theme=dark] & {
+            &:last-child {
+                background-color: #2C343E;
+            }
+
+            &::before {
+                background-color: #2C343E;
+            }
+        }
+    }
 
     .steps {
         display: flex;
         flex-flow: row nowrap;
+
+        justify-content: space-between;
+
+
 
 
     }
