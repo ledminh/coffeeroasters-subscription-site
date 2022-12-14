@@ -1,12 +1,14 @@
 import { QuestionFromServer } from "../../../../pages/subscribe"
 import { QuestionPropsType } from "../Question"
-import { addIsOpened, addSeclectedOption } from "./transformers"
+import { addStatus, addSeclectedOption } from "./transformers"
 
 /**********************************
  *  Types/Interfaces
  */
+type QuestionDataType = QuestionFromServer & QuestionPropsType; 
+
 type useDataType = (questionsFromServer:QuestionFromServer[]) => {
-    questions: QuestionPropsType[]
+    questions: QuestionDataType[]
 }
 
 
@@ -16,7 +18,7 @@ type useDataType = (questionsFromServer:QuestionFromServer[]) => {
  
 const useData: useDataType = (questionsFromServer) => {
     const questions = transform(questionsFromServer, [
-        addIsOpened,
+        addStatus,
         addSeclectedOption    
     ]);
 
@@ -44,11 +46,11 @@ export default useData;
  */
 
 type transformerType = (question:QuestionFromServer) => QuestionFromServer;
-type transformType = (questionsFromServer:QuestionFromServer[], tranformers:transformerType[]) => QuestionPropsType[];
+type transformType = (questionsFromServer:QuestionFromServer[], tranformers:transformerType[]) => QuestionDataType[];
 
 const transform:transformType = (questionsFromServer:QuestionFromServer[], tranformers) => {
     return questionsFromServer.map((question) => {
-        return tranformers.reduce((q, transformer) => transformer(q), question) as QuestionPropsType;
+        return tranformers.reduce((q, transformer) => transformer(q), question) as unknown as QuestionDataType;
         
     })
 }

@@ -11,8 +11,8 @@ import ArrowIcon from '../../../../assets/images/plan/desktop/icon-arrow.svg';
  */
 export interface QuestionPropsType {
     question: string,
-    isOpened: boolean,
-    optionSelected: string | null,
+    status: 'opened' | 'closed' | 'disabled',
+    selectedOption: string | null,
     options: OptionPropsType[]
 } 
 
@@ -23,7 +23,7 @@ type QuestionType = FunctionComponent<QuestionPropsType>
 /***************************
  *  Main Component
  */
-const Question:QuestionType = ({question, options}) => {
+const Question:QuestionType = ({question, options, status, selectedOption}) => {
 
     return (
         <div className={styles.wrapper}>
@@ -33,7 +33,7 @@ const Question:QuestionType = ({question, options}) => {
                     <ArrowIcon />
                 </div>
             </div>
-            <div className={styles.options}>
+            <div className={`${styles.options} ${styles[status]}`}>
                 {
                     options.map(opt => (
                         <Option 

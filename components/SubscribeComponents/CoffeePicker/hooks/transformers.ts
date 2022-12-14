@@ -1,11 +1,11 @@
 import { QuestionFromServer } from "../../../../pages/subscribe";
 
-export const addIsOpened = (question:QuestionFromServer) => {
+export const addStatus = (question:QuestionFromServer) => {
     
 
     return {
         ...question,
-        isOpened: false
+        status: 'closed'
     };
 }
 

@@ -10,16 +10,17 @@ import { GetServerSideProps } from 'next';
  * Interface for the props object
  */
 export type QuestionFromServer = {
-  question: string,
-  options: {
-    name: string,
-    description: string
-  }[]
+    navName: string,
+    question: string,
+    options: {
+        name: string,
+        description: string
+    }[]
 }
 
 
 interface SubscribeProps {
-  questionsFromServer: QuestionFromServer[]
+    questionsFromServer: QuestionFromServer[]
 }
 
 
@@ -60,7 +61,8 @@ export default Subscribe;
 export const getServerSideProps:GetServerSideProps = async () =>{
 
   return { props: { questionsFromServer: [
-      {
+    {
+        navName: 'Preferences',    
         question: "How do you drink your coffee?",
         options: [
             {
@@ -79,6 +81,7 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     },
 
     {
+        navName: 'Bean Type',
         question: "What type of coffee?",
         options: [
             {
@@ -97,6 +100,7 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     },
 
     {
+        navName: 'Quantity',
         question: "How much would you like?",
         options: [
             {
@@ -115,6 +119,7 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     },
 
     {
+        navName: 'Grind Option',
         question: "Want us to grind them?",
         options: [
             {
@@ -133,6 +138,7 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     },
 
     {
+        navName: 'Deliveries',
         question: "How often should we deliver?",
         options: [
             {

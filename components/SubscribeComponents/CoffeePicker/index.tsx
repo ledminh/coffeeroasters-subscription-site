@@ -7,6 +7,7 @@ import Result from "./Result";
 
 import useData from "./hooks/useData";
 import { QuestionFromServer } from "../../../pages/subscribe";
+import Navigator from "./Navigator";
 
 
 interface CoffeePickerProps {
@@ -21,38 +22,9 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.nav}>
-                <ul className={styles.ul}>
-                    <li className={styles.li}>
-                        <button>
-                            <span className={styles.order}>01</span>
-                            <span className={styles.name}>Preferences</span>
-                        </button>
-                    </li>
-                    <li className={styles.li}>
-                        <button>
-                            <span className={styles.order}>02</span>
-                            <span className={styles.name}>Bean type</span>
-                        </button>
-                    </li>
-                    <li className={styles.li}>
-                        <button>
-                            <span className={styles.order}>03</span>
-                            <span className={styles.name}>Quantity</span>
-                        </button>
-                    </li>
-                    <li className={styles.li}>
-                        <button>
-                            <span className={styles.order}>04</span>
-                            <span className={styles.name}>Grind option</span>
-                        </button>
-                    </li>
-                    <li className={styles.li}>
-                        <button>
-                            <span className={styles.order}>05</span>
-                            <span className={styles.name}>Deliveries</span>
-                        </button>
-                    </li>
-                </ul>
+                <Navigator 
+                    navNames={questions.map(q => q.navName)}
+                    />
             </div>
             <div className={styles.main}>
                 <div className={styles.questions}>
@@ -61,8 +33,8 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
                             <Question
                                 key={q.question}
                                 question={q.question}
-                                isOpened={q.isOpened}
-                                optionSelected={q.optionSelected}
+                                status={q.status}
+                                selectedOption={q.selectedOption}
                                 options={q.options}
                             />
                         ))

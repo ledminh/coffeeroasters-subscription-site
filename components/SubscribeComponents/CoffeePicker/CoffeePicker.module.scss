@@ -27,63 +27,19 @@
     .wrapper {
         margin: 0 5.3425rem;
         
-    
     }
     .nav {
         display: block;
 
         flex-basis: 31%;
+
     }
 
     .main {
         flex-basis: 65.5%;
     }
 
-    .ul {
-        list-style: none;
-    }
-
-    .li {
-        height: 5.5rem;
-
-        border-bottom: 1px solid #83888F;
-
-        
-        &:last-child {
-            border-bottom: none;
-        }
-
-        button {
-            cursor: pointer;
-
-            width: 100%;
-            height: 100%;
-
-            text-align: left;
-
-            border: none;
-
-            color: #83888F;
-            background-color: base.$lightCream;
-            font-family: 'Fraunces', serif;
-            font-weight: 900;
-            font-size: 1.5rem;
-            line-height: 2rem;
-
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: flex-start;
-            align-items: center;
-
-            gap: 1.5rem;
-
-            &:hover {
-                color: #333D4B;
-
-                
-            }
-        }
-    }
+    
 
     .createMyPlanButton {
         justify-content: flex-end;

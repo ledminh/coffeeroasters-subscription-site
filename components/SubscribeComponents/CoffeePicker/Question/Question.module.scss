@@ -18,6 +18,10 @@
 
 }
 
+.options.closed {
+    display: none;
+}
+
 @media screen and (min-width: 700px) {
     .wrapper {
         margin-bottom: 100px;
@@ -29,5 +33,11 @@
         align-items: stretch;
 
         gap: 10px;
+    }
+}
+
+@media screen and (min-width: 1180px) {
+    .wrapper {
+        margin-bottom: 88px;
     }
 }
