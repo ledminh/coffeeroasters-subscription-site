@@ -11,6 +11,8 @@ import ArrowIcon from '../../../../assets/images/plan/desktop/icon-arrow.svg';
  */
 export interface QuestionPropsType {
     question: string,
+    isOpened: boolean,
+    optionSelected: string | null,
     options: OptionPropsType[]
 } 
 

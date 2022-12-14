@@ -18,9 +18,6 @@ type CoffeePickerType = FunctionComponent<CoffeePickerProps>;
 const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
     const {questions} = useData(questionsFromServer);
 
-
-
-
     return (
         <div className={styles.wrapper}>
             <div className={styles.nav}>
@@ -64,6 +61,8 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
                             <Question
                                 key={q.question}
                                 question={q.question}
+                                isOpened={q.isOpened}
+                                optionSelected={q.optionSelected}
                                 options={q.options}
                             />
                         ))
