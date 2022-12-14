@@ -17,7 +17,7 @@ interface CoffeePickerProps {
 type CoffeePickerType = FunctionComponent<CoffeePickerProps>;
 
 const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
-    const {questions, toggleQuestion} = useData(questionsFromServer);
+    const {questions, toggleQuestion, toggleOption} = useData(questionsFromServer);
 
     return (
         <div className={styles.wrapper}>
@@ -25,7 +25,8 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
                 <Navigator 
                     questions={questions.map(q => ({
                         navName: q.navName,
-                        status: q.status
+                        status: q.status,
+                        isOptionSelected: q.selectedOption !== null
                     }))}
                     toggleQuestion={toggleQuestion}
                     />
@@ -42,6 +43,7 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
                                 options={q.options}
                                 navName={q.navName}
                                 toggleQuestion={toggleQuestion}
+                                toggleOption={toggleOption}
                             />
                         ))
                     }

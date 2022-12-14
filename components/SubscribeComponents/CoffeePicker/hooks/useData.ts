@@ -12,13 +12,14 @@ export type QuestionDataType = QuestionFromServer & QuestionPropsType;
 type useDataType = (questionsFromServer:QuestionFromServer[]) => {
     questions: QuestionDataType[],
     toggleQuestion: (navName:string) => void,
+    toggleOption: (option:string, question:string) => void
 }
 
 
 /**********************************
  * Hook
  */
- 
+
 const useData: useDataType = (questionsFromServer) => {
     const questions = transform(questionsFromServer, [
         addStatus,
@@ -48,11 +49,30 @@ const useData: useDataType = (questionsFromServer) => {
         }
     }
 
-    
+    const toggleOption = (option:string, question:string) => {
+        
+        if(state.find((q) => q.question === question)?.selectedOption === option) {
+            dispatch({
+                type: "SET_SELECTED_OPTION",
+                option: null,
+                question
+            })
+            return;
+        }
+
+
+        dispatch({
+            type: "SET_SELECTED_OPTION",
+            option,
+            question
+        })
+    }
+
     
     return {
         questions: state,
-        toggleQuestion
+        toggleQuestion,
+        toggleOption
     }
 }
 

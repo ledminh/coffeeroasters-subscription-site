@@ -13,6 +13,11 @@
     &:hover {
         background-color: #FDD6BA;
     }
+
+    &.selected {
+        background-color: #0E8784;
+        color: #FEFCF7;
+    }
 }
 
 .name {

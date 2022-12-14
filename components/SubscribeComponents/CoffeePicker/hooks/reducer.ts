@@ -6,12 +6,24 @@ export default function reducer (state:stateType, action:actionType) {
 
             return state.map((question) => {
                 if(question.navName === action.navName) {
+                    
                     return {
                         ...question,
                         status: action.status
                     } 
                 }           
                 return question;    
+            })
+            break;
+        case "SET_SELECTED_OPTION":
+            return state.map((question) => {
+                if(question.question === action.question) {
+                    return {
+                        ...question,
+                        selectedOption: action.option
+                    }
+                }
+                return question;
             })
 
         default:
@@ -30,4 +42,8 @@ type actionType = {
     type: "SET_STATUS",
     navName: string,
     status: "opened" | "closed"
+} | {
+    type: "SET_SELECTED_OPTION",
+    option: string | null,
+    question: string
 }

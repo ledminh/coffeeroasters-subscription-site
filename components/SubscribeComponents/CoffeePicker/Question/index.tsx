@@ -15,7 +15,8 @@ export interface QuestionPropsType {
     selectedOption: string | null,
     options: OptionPropsType[],
     navName: string,
-    toggleQuestion: (navName: string) => void
+    toggleQuestion: (navName: string) => void,
+    toggleOption: (option: string, question: string) => void
 } 
 
 type QuestionType = FunctionComponent<QuestionPropsType>
@@ -25,7 +26,7 @@ type QuestionType = FunctionComponent<QuestionPropsType>
 /***************************
  *  Main Component
  */
-const Question:QuestionType = ({question, options, status, selectedOption, navName, toggleQuestion}) => {
+const Question:QuestionType = ({question, options, status, selectedOption, navName, toggleQuestion, toggleOption}) => {
 
     return (
         <div className={styles.wrapper}>
@@ -42,8 +43,11 @@ const Question:QuestionType = ({question, options, status, selectedOption, navNa
                     options.map(opt => (
                         <Option 
                             key={opt.name}
+                            question={question}
                             name={opt.name}
+                            selected={opt.name === selectedOption}
                             description={opt.description}
+                            toggleOption={toggleOption}
                         />
                     ))
                 }

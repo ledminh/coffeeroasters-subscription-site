@@ -8,6 +8,7 @@ import styles from './Navigator.module.scss';
 interface NavigatorPropsType {
     questions: {
         navName: string,
+        isOptionSelected: boolean,
         status: 'opened' | 'closed' | 'disabled'
     }[],
     toggleQuestion: (name: string) => void
@@ -32,7 +33,7 @@ const Navigator:NavigatorType = ({questions, toggleQuestion}) => {
                             <button
                                 onClick={() => toggleQuestion(question.navName)}
                                 >
-                                <span className={styles.order}>{'0' + (index + 1)}</span>
+                                <span className={`${styles.order} ${question.isOptionSelected? styles.optionSelected : ''}`}>{'0' + (index + 1)}</span>
                                 <span className={styles.name}>{question.navName}</span>
                             </button>
                         </li>
