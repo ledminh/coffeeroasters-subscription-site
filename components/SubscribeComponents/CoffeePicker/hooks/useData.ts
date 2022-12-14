@@ -1,14 +1,17 @@
+import { useReducer } from "react";
 import { QuestionFromServer } from "../../../../pages/subscribe"
 import { QuestionPropsType } from "../Question"
+import reducer from "./reducer";
 import { addStatus, addSeclectedOption } from "./transformers"
 
 /**********************************
  *  Types/Interfaces
  */
-type QuestionDataType = QuestionFromServer & QuestionPropsType; 
+export type QuestionDataType = QuestionFromServer & QuestionPropsType; 
 
 type useDataType = (questionsFromServer:QuestionFromServer[]) => {
-    questions: QuestionDataType[]
+    questions: QuestionDataType[],
+    toggleQuestion: (navName:string) => void,
 }
 
 
@@ -22,21 +25,39 @@ const useData: useDataType = (questionsFromServer) => {
         addSeclectedOption    
     ]);
 
-    console.log(questions);
+    const [state, dispatch] = useReducer(reducer, questions);
+
+    
+    
+    
+    const toggleQuestion = (navName:string) => {
+        const currentStatus = state.find((question) => question.navName === navName)?.status;
+
+        if(currentStatus === "opened") {
+            dispatch({
+                type: "SET_STATUS",
+                navName,
+                status: "closed"
+            })
+        } else if(currentStatus === "closed"){
+            dispatch({
+                type: "SET_STATUS",
+                navName,
+                status: "opened"
+            })
+        }
+    }
+
     
     
     return {
-        questions
+        questions: state,
+        toggleQuestion
     }
 }
 
 
 export default useData;
-
-
-
-
-
 
 
 
