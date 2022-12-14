@@ -12,10 +12,20 @@
 
     margin-bottom: 2rem;
 
+    cursor: pointer;
+
     .text {
         color: #83888F;
     }
 
+    .text.opened {
+        color: #333D4B;
+    }           
+
+}
+
+.arrow.opened {
+    transform: rotate(180deg);
 }
 
 .options.closed {

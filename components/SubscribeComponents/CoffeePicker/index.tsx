@@ -23,7 +23,10 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
         <div className={styles.wrapper}>
             <div className={styles.nav}>
                 <Navigator 
-                    navNames={questions.map(q => q.navName)}
+                    questions={questions.map(q => ({
+                        navName: q.navName,
+                        status: q.status
+                    }))}
                     toggleQuestion={toggleQuestion}
                     />
             </div>
@@ -37,6 +40,8 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
                                 status={q.status}
                                 selectedOption={q.selectedOption}
                                 options={q.options}
+                                navName={q.navName}
+                                toggleQuestion={toggleQuestion}
                             />
                         ))
                     }

@@ -10,7 +10,9 @@
     border-bottom: 1px solid #83888F;
 
     
-    
+
+
+
     &:last-child {
         border-bottom: none;
     }
@@ -44,6 +46,14 @@
             color: #333D4B;
 
             
+        }
+
+
+    }
+
+    &.opened {
+        button {
+            color: #333D4B;
         }
     }
 }

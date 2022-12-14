@@ -6,7 +6,10 @@ import styles from './Navigator.module.scss';
  *  Types
  */
 interface NavigatorPropsType {
-    navNames: string[],
+    questions: {
+        navName: string,
+        status: 'opened' | 'closed' | 'disabled'
+    }[],
     toggleQuestion: (name: string) => void
 } 
 
@@ -17,20 +20,20 @@ type NavigatorType = FunctionComponent<NavigatorPropsType>
 /***************************
  *  Main Component
  */
-const Navigator:NavigatorType = ({navNames, toggleQuestion}) => {
+const Navigator:NavigatorType = ({questions, toggleQuestion}) => {
 
     return (
         <ul className={styles.wrapper}>
             {
-                navNames.map((name, index) => {
+                questions.map((question, index) => {
                     return (
-                        <li className={styles.li}
-                            key={name}>
+                        <li className={`${styles.li} ${styles[question.status]}`}
+                            key={question.navName}>
                             <button
-                                onClick={() => toggleQuestion(name)}
+                                onClick={() => toggleQuestion(question.navName)}
                                 >
                                 <span className={styles.order}>{'0' + (index + 1)}</span>
-                                <span className={styles.name}>{name}</span>
+                                <span className={styles.name}>{question.navName}</span>
                             </button>
                         </li>
                     )
