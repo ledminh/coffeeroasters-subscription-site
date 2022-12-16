@@ -23,14 +23,9 @@
 
     &.disabled {
         cursor: default;
-        background-color: black;
-    }
-    
-    
+        color: scale-color($color: #83888F, $lightness: +40%);
+    } 
 }
-
-
-
 
 .arrow.opened {
     transform: rotate(180deg);

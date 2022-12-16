@@ -100,6 +100,12 @@ const useData: useDataType = (questionsFromServer) => {
             navName,
             status: "disabled"
         });
+
+        dispatch({
+            type: "SET_SELECTED_OPTION",
+            option: null,
+            question: 'Want us to grind them?'
+        });
     }
 
     

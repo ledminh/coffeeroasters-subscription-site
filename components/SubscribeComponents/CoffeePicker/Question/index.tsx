@@ -31,7 +31,7 @@ const Question:QuestionType = ({question, options, status, selectedOption, navNa
 
     return (
         <div className={styles.wrapper}>
-            <div className={`${styles.question} ${styles[status]}}`}
+            <div className={`${styles.question} ${styles[status]}`}
                 onClick={() => status !== 'disabled'? toggleQuestion(navName) : null}
             >
                 <h3 className={`${styles.text} ${styles[status]}`}>{question}</h3>
