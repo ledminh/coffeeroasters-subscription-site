@@ -5,18 +5,19 @@ import Option, { OptionPropsType } from "../Option";
 import styles from './Question.module.scss';
 
 import ArrowIcon from '../../../../assets/images/plan/desktop/icon-arrow.svg';
+import { navNameType, questionType } from "../hooks/reducer";
 
 /***************************
  *  Types
  */
 export interface QuestionPropsType {
-    question: string,
+    question: questionType,
     status: 'opened' | 'closed' | 'disabled',
     selectedOption: string | null,
     options: OptionPropsType[],
-    navName: string,
-    toggleQuestion: (navName: string) => void,
-    toggleOption: (option: string, question: string) => void
+    navName: navNameType,
+    toggleQuestion: (navName: navNameType) => void,
+    toggleOption: (option: string, question: questionType) => void,
 } 
 
 type QuestionType = FunctionComponent<QuestionPropsType>
@@ -30,8 +31,8 @@ const Question:QuestionType = ({question, options, status, selectedOption, navNa
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.question}
-                onClick={() => toggleQuestion(navName)}
+            <div className={`${styles.question} ${styles[status]}}`}
+                onClick={() => status !== 'disabled'? toggleQuestion(navName) : null}
             >
                 <h3 className={`${styles.text} ${styles[status]}`}>{question}</h3>
                 <div className={`${styles.arrow} ${styles[status]}`}>

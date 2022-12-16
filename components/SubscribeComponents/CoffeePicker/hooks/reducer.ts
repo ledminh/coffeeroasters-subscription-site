@@ -38,12 +38,16 @@ export default function reducer (state:stateType, action:actionType) {
  */
 type stateType = QuestionDataType[];    
 
+export type navNameType = 'Preferences' | 'Bean Type' | 'Quantity' | 'Grind Option' | 'Deliveries';
+
+export type questionType = 'How do you drink your coffee?' | 'What type of coffee?' | 'How much would you like?' | 'Want us to grind them?' | 'How often should we deliver?';
+
 type actionType = {
     type: "SET_STATUS",
-    navName: string,
-    status: "opened" | "closed"
+    navName: navNameType,
+    status: "opened" | "closed" | "disabled"
 } | {
     type: "SET_SELECTED_OPTION",
     option: string | null,
-    question: string
+    question: questionType
 }

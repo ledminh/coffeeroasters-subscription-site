@@ -4,6 +4,8 @@ import { QuestionPropsType } from "../Question"
 import reducer from "./reducer";
 import { addStatus, addSeclectedOption } from "./transformers"
 
+import { questionType, navNameType } from "./reducer";
+
 /**********************************
  *  Types/Interfaces
  */
@@ -11,8 +13,9 @@ export type QuestionDataType = QuestionFromServer & QuestionPropsType;
 
 type useDataType = (questionsFromServer:QuestionFromServer[]) => {
     questions: QuestionDataType[],
-    toggleQuestion: (navName:string) => void,
-    toggleOption: (option:string, question:string) => void
+    toggleQuestion: (navName:navNameType) => void,
+    toggleOption: (option:string, question:questionType) => void,
+    disableQuestion: (navName:navNameType) => void
 }
 
 
@@ -28,10 +31,11 @@ const useData: useDataType = (questionsFromServer) => {
 
     const [state, dispatch] = useReducer(reducer, questions);
 
+
+
     
     
-    
-    const toggleQuestion = (navName:string) => {
+    const toggleQuestion = (navName:navNameType) => {
         const currentStatus = state.find((question) => question.navName === navName)?.status;
 
         if(currentStatus === "opened") {
@@ -49,9 +53,19 @@ const useData: useDataType = (questionsFromServer) => {
         }
     }
 
-    const toggleOption = (option:string, question:string) => {
+    const toggleOption = (option:string, question:questionType) => {
         
-        if(state.find((q) => q.question === question)?.selectedOption === option) {
+        if(state.find((q) => q.question === question)?.selectedOption === option) { //de-select option
+            
+            if(option === 'Capsule') {
+                dispatch({
+                    type: "SET_STATUS",
+                    navName: "Grind Option",
+                    status: "closed"                  
+                });
+            
+            }
+
             dispatch({
                 type: "SET_SELECTED_OPTION",
                 option: null,
@@ -60,6 +74,18 @@ const useData: useDataType = (questionsFromServer) => {
             return;
         }
 
+        //select option
+        if(option === 'Capsule') {
+            disableQuestion("Grind Option");
+        }
+        else if (question === 'How do you drink your coffee?' && state.find(q => q.question === 'How do you drink your coffee?')?.selectedOption === 
+        'Capsule'){
+            dispatch({
+                type: "SET_STATUS",
+                navName: "Grind Option",
+                status: "closed"                  
+            });
+        }
 
         dispatch({
             type: "SET_SELECTED_OPTION",
@@ -68,18 +94,24 @@ const useData: useDataType = (questionsFromServer) => {
         })
     }
 
+    const disableQuestion = (navName:navNameType) => {
+        dispatch({
+            type: "SET_STATUS",
+            navName,
+            status: "disabled"
+        });
+    }
+
     
     return {
         questions: state,
         toggleQuestion,
-        toggleOption
+        toggleOption,
+        disableQuestion
     }
 }
 
-
 export default useData;
-
-
 
 
 /**********************************

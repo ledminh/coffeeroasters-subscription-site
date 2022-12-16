@@ -17,7 +17,7 @@ interface CoffeePickerProps {
 type CoffeePickerType = FunctionComponent<CoffeePickerProps>;
 
 const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
-    const {questions, toggleQuestion, toggleOption} = useData(questionsFromServer);
+    const {questions, toggleQuestion, toggleOption, disableQuestion} = useData(questionsFromServer);
 
     return (
         <div className={styles.wrapper}>
@@ -44,6 +44,7 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
                                 navName={q.navName}
                                 toggleQuestion={toggleQuestion}
                                 toggleOption={toggleOption}
+                                disableQuestion={disableQuestion}
                             />
                         ))
                     }

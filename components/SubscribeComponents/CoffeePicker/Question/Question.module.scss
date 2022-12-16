@@ -13,24 +13,34 @@
     margin-bottom: 2rem;
 
     cursor: pointer;
-
-    .text {
-        color: #83888F;
-    }
+    
+    color: #83888F;
+    
 
     .text.opened {
         color: #333D4B;
     }           
 
+    &.disabled {
+        cursor: default;
+        background-color: black;
+    }
+    
+    
 }
+
+
+
 
 .arrow.opened {
     transform: rotate(180deg);
 }
 
-.options.closed {
+.options.closed,
+.options.disabled {
     display: none;
 }
+
 
 @media screen and (min-width: 700px) {
     .wrapper {
