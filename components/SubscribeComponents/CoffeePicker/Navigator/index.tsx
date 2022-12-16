@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { navNameType } from "../hooks/reducer";
 
 import styles from './Navigator.module.scss';
 
@@ -7,11 +8,11 @@ import styles from './Navigator.module.scss';
  */
 interface NavigatorPropsType {
     questions: {
-        navName: string,
+        navName: navNameType,
         isOptionSelected: boolean,
         status: 'opened' | 'closed' | 'disabled'
     }[],
-    toggleQuestion: (name: string) => void
+    toggleQuestion: (name: navNameType) => void
 } 
 
 type NavigatorType = FunctionComponent<NavigatorPropsType>

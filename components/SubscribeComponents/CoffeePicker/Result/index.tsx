@@ -6,7 +6,11 @@ import styles from './Result.module.scss';
  *  Types
  */
 interface ResultPropsType {
-
+    preferences: string | null,
+    beanType: string | null,
+    quantity: string | null,
+    grindOption: string | null,
+    delivery: string | null
 } 
 
 type ResultType = FunctionComponent<ResultPropsType>
@@ -16,12 +20,12 @@ type ResultType = FunctionComponent<ResultPropsType>
 /***************************
  *  Main Component
  */
-const Result:ResultType = () => {
+const Result:ResultType = ({preferences, beanType, quantity, grindOption, delivery}) => {
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.title}>Order Summary</div>
-            <h3 className={styles.summary}>I drink coffee as <span className={styles.option}>Filter</span>, with a <span className={styles.option}>Decaf</span> type of bean. <span className={styles.option}>250g</span> ground ala <span className={styles.option}>Cefetiére</span>, sent to me <span className={styles.option}>Every Week</span>.</h3>
+            <h3 className={styles.summary}>I drink coffee as <span className={styles.option}>{preferences? preferences: '______'}</span>, with a <span className={styles.option}>{beanType? beanType: '______'}</span> type of bean. <span className={styles.option}>{quantity? quantity: '______'}</span> ground ala <span className={styles.option}>{grindOption? grindOption: '______'}</span>, sent to me <span className={styles.option}>{delivery? delivery: '______'}</span>.</h3>
         </div>
     )
 }

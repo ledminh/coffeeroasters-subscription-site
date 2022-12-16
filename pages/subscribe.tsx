@@ -40,7 +40,7 @@ const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer}) => {
               />
             <CoffeePicker
               questionsFromServer={questionsFromServer}
-              
+              onClick={(summary) => console.log(summary)}              
             />
         </PageLayout>
   )

@@ -15,7 +15,6 @@ type useDataType = (questionsFromServer:QuestionFromServer[]) => {
     questions: QuestionDataType[],
     toggleQuestion: (navName:navNameType) => void,
     toggleOption: (option:string, question:questionType) => void,
-    disableQuestion: (navName:navNameType) => void
 }
 
 
@@ -113,7 +112,6 @@ const useData: useDataType = (questionsFromServer) => {
         questions: state,
         toggleQuestion,
         toggleOption,
-        disableQuestion
     }
 }
 

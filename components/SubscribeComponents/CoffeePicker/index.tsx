@@ -8,16 +8,18 @@ import Result from "./Result";
 import useData from "./hooks/useData";
 import { QuestionFromServer } from "../../../pages/subscribe";
 import Navigator from "./Navigator";
+import { SummaryType } from "./CreateMyPlanButton";
 
 
 interface CoffeePickerProps {
-    questionsFromServer: QuestionFromServer[]
+    questionsFromServer: QuestionFromServer[],
+    onClick: (summary: SummaryType) => void
 }
 
 type CoffeePickerType = FunctionComponent<CoffeePickerProps>;
 
-const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
-    const {questions, toggleQuestion, toggleOption, disableQuestion} = useData(questionsFromServer);
+const CoffeePicker:CoffeePickerType = ({questionsFromServer, onClick}) => {
+    const {questions, toggleQuestion, toggleOption} = useData(questionsFromServer);
 
     return (
         <div className={styles.wrapper}>
@@ -44,14 +46,22 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer}) => {
                                 navName={q.navName}
                                 toggleQuestion={toggleQuestion}
                                 toggleOption={toggleOption}
-                                disableQuestion={disableQuestion}
                             />
                         ))
                     }
                 </div>            
-                <Result />
+                <Result 
+                    preferences={questions[0].selectedOption}
+                    beanType={questions[1].selectedOption}
+                    quantity={questions[2].selectedOption}
+                    grindOption={questions[3].selectedOption}
+                    delivery={questions[4].selectedOption}
+                />
                 <div className={styles.createMyPlanButton}>
-                    <CreateMyPlanButton/>
+                    <CreateMyPlanButton
+                        onClick={onClick}
+                        questions={questions}
+                    />
                 </div>
             </div>
         </div>
