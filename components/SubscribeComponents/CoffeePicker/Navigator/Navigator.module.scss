@@ -57,4 +57,11 @@
             color: #333D4B;
         }
     }
+
+    &.disabled {
+        button {
+            cursor: default;
+            color: scale-color($color: #83888F, $lightness: +40%);
+        }
+    }
 }
