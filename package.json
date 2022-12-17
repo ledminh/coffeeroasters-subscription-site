@@ -9,7 +9,9 @@
     "lint": "next lint",
     "create-component": "npx generate-react-cli component --type=default",
     "create-page": "npx generate-react-cli component --type=page --flat",
-    "create-layout": "npx generate-react-cli component --type=layout" 
+    "create-layout": "npx generate-react-cli component --type=layout",
+    "create-modal": "npx generate-react-cli component --type=modal --flat Modal",
+    "create-modal-component": "npx generate-react-cli component --type=modalComponent --flat"
   },
   "dependencies": {
     "@types/node": "18.11.9",

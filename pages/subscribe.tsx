@@ -5,6 +5,7 @@ import HeroImage from '../components/SubscribeComponents/HeroImage';
 import HowItWorks from '../components/HowItWorks';
 import CoffeePicker from '../components/SubscribeComponents/CoffeePicker';
 import { GetServerSideProps } from 'next';
+import Modals from '../components/Modal';
 
 /**********************************
  * Interface for the props object
@@ -42,6 +43,7 @@ const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer}) => {
               questionsFromServer={questionsFromServer}
               onClick={(summary) => console.log(summary)}              
             />
+            <Modals />
         </PageLayout>
   )
 };

@@ -1,0 +1,104 @@
+.header {
+    background-color: #333D4B;
+    color: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+
+    height: 88px;
+    padding: 0 24px;
+
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+
+}
+
+.body {
+    padding: 40px 24px 24px;
+}
+
+.quote {
+    color: #83888F;
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-family: 'Fraunces', serif;
+    line-height: 2.5rem;
+
+    margin-bottom: 1rem;
+}
+
+.selection {
+    color: #0E8784;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 24px;
+
+    height: 56px;
+
+    margin-bottom: 24px;
+}
+
+.priceOutside {
+    display: none;
+}
+
+.button {
+    width: 100%;
+    height: 100%;
+
+    font-family: 'Fraunces', serif;
+    font-size: 1.125rem;
+    font-weight: 900;
+    color: #FEFCF7;
+    background-color: #0E8784;
+    border-radius: 6px;
+
+    cursor:pointer;
+
+    border: none;
+
+    &:hover {
+        background-color: #66D2CF;
+    }
+    
+}
+
+@media (min-width: 768px) {
+    .header {
+        font-size: 2.5rem;
+        padding: 0 44px;
+    }
+
+    .body {
+        padding: 40px 44px 24px;
+    }
+
+    .footer {
+        padding: 0 44px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 13px;
+    }
+
+    .priceInside {
+        display: none;
+    }
+
+    .priceOutside {
+        display: block;
+        color: #333D4B;
+
+        font-size: 2rem;
+        font-family: 'Fraunces', serif;
+        font-weight: 900;
+    }
+}
