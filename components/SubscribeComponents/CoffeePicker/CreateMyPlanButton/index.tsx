@@ -13,7 +13,8 @@ export type SummaryType = {
 
 interface CreateMyPlanButtonPropsType {
     onClick: (summary: SummaryType) => void,
-    questions: QuestionDataType[]
+    questions: QuestionDataType[],
+    disabled: boolean
 
 } 
 
@@ -24,7 +25,7 @@ type CreateMyPlanButtonType = FunctionComponent<CreateMyPlanButtonPropsType>
 /***************************
  *  Main Component
  */
-const CreateMyPlanButton:CreateMyPlanButtonType = ({onClick, questions}) => {
+const CreateMyPlanButton:CreateMyPlanButtonType = ({onClick, questions, disabled}) => {
 
     const handleClick = () => {
         onClick({
@@ -38,7 +39,9 @@ const CreateMyPlanButton:CreateMyPlanButtonType = ({onClick, questions}) => {
 
     return (
         <button className={styles.wrapper}
-            onClick={handleClick}
+            onClick={() => disabled? null : handleClick()}
+
+            disabled={disabled}
         >
             Create My Plan
         </button>

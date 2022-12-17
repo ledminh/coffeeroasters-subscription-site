@@ -1,8 +1,22 @@
 import { FunctionComponent } from "react";
 // import SampleModal from "./SampleModal";
 
+/****************************
+ *  Types
+ */
+interface ModalsProps {
+    show: boolean,
+    setShow: (show:boolean) => void
+}
 
-const Modals:FunctionComponent = () => {
+type ModalsType = FunctionComponent<ModalsProps>;
+
+
+/****************************
+ *  Main Component
+ */
+
+const Modals:ModalsType = ({show, setShow}) => {
 
 
     return (

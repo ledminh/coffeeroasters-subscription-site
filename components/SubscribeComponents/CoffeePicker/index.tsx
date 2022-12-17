@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import styles from './CoffeePicker.module.scss';
 import CreateMyPlanButton from "./CreateMyPlanButton";
 import Question from "./Question";
@@ -20,6 +20,18 @@ type CoffeePickerType = FunctionComponent<CoffeePickerProps>;
 
 const CoffeePicker:CoffeePickerType = ({questionsFromServer, onClick}) => {
     const {questions, toggleQuestion, toggleOption} = useData(questionsFromServer);
+
+    const [isSelectedAll, setIsSelectedAll] = useState(false);
+
+    useEffect(() => {
+        for(let i= 0; i < questions.length; i++) {
+            if(questions[i].selectedOption === null)
+                return setIsSelectedAll(false);
+        }
+
+        setIsSelectedAll(true);
+
+    }, [questions]);
 
     return (
         <div className={styles.wrapper}>
@@ -61,6 +73,7 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer, onClick}) => {
                     <CreateMyPlanButton
                         onClick={onClick}
                         questions={questions}
+                        disabled={!isSelectedAll}
                     />
                 </div>
             </div>

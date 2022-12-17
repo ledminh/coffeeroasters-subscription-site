@@ -7,6 +7,9 @@ import CoffeePicker from '../components/SubscribeComponents/CoffeePicker';
 import { GetServerSideProps } from 'next';
 import Modals from '../components/Modal';
 
+import {useState} from 'react';
+import { SummaryType } from '../components/SubscribeComponents/CoffeePicker/CreateMyPlanButton';
+
 /**********************************
  * Interface for the props object
  */
@@ -32,28 +35,32 @@ interface SubscribeProps {
  */
 
 const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer}) => {
-  return (
+    const [isModalShow, setIsModalShow] = useState(false);
+    const [summary, setSummary] = useState<SummaryType|null>(null);
+
+    return (
         <PageLayout>
             <HeroImage />
             <HowItWorks
                 showTitle={false}
                 darkTheme={true}
-              />
+                />
             <CoffeePicker
-              questionsFromServer={questionsFromServer}
-              onClick={(summary) => console.log(summary)}              
-            />
-            <Modals />
+                questionsFromServer={questionsFromServer}
+                onClick={(summary) => {
+                    setSummary(summary);
+                    setIsModalShow(true);
+                }}
+                />
+            <Modals 
+                show={isModalShow}
+                setShow={setIsModalShow}
+                />
         </PageLayout>
-  )
+    )
 };
 
 export default Subscribe;
-
-
-
-
-
 
 
 
@@ -159,3 +166,11 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     }
   ]}}
 }
+
+
+
+
+
+
+
+

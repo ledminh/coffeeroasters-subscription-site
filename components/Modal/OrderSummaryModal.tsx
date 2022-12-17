@@ -16,7 +16,9 @@ const OrderSummaryModal:OrderSummaryModalComponent = ({show, setShow}) => {
     
     
     return (
-        <Modal show={show}>
+        <Modal show={show}
+                onClose={() => setShow(false)}
+            >
             <div className={styles.header}>
                 Order Summary
             </div>
