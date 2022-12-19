@@ -1,30 +1,63 @@
-import { QuestionDataType } from "./useData";
+import { questionType, navNameType } from "../../../../types";
 
-export default function reducer (state:stateType, action:actionType) {
+import { QuestionDataType } from "../../../../types";
+
+export default function reducer (state:QuestionDataType[], action:actionType) {
     switch(action.type) {
         case "SET_STATUS":
 
             return state.map((question) => {
-                if(question.navName === action.navName) {
-                    
+                if(question.id === action.questionID) {
                     return {
                         ...question,
                         status: action.status
                     } 
-                }           
+                }
+
                 return question;    
             })
-            break;
+
         case "SET_SELECTED_OPTION":
             return state.map((question) => {
-                if(question.question === action.question) {
+                if(question.id === action.questionID) {
+                    if(!action.isSelecting) {
+                        return {
+                            ...question,
+                            selectedOption: null
+                        }
+                    }
+
+                    const selectingOption = question.options.find((option) => option.id === action.optionID);
+                    
+                    if(!selectingOption) return question;
+
                     return {
                         ...question,
-                        selectedOption: action.option
+                        selectedOption: selectingOption
                     }
                 }
+
                 return question;
             })
+
+        case 'SET_PRICES':
+            return state.map((question) => {
+                if(question.navName === "Deliveries") {
+                    return {
+                        ...question,
+                        options: question.options.map((option, index) => {
+                            return {
+                                ...option,
+                                price: action.prices[index]
+                            }  
+                        })
+                    }
+                    
+                }
+
+                return question;
+            });
+
 
         default:
             return state;
@@ -36,18 +69,20 @@ export default function reducer (state:stateType, action:actionType) {
 /***********************
  * Types
  */
-type stateType = QuestionDataType[];    
-
-export type navNameType = 'Preferences' | 'Bean Type' | 'Quantity' | 'Grind Option' | 'Deliveries';
-
-export type questionType = 'How do you drink your coffee?' | 'What type of coffee?' | 'How much would you like?' | 'Want us to grind them?' | 'How often should we deliver?';
-
 type actionType = {
     type: "SET_STATUS",
-    navName: navNameType,
+    questionID: string,
     status: "opened" | "closed" | "disabled"
 } | {
     type: "SET_SELECTED_OPTION",
-    option: string | null,
-    question: questionType
+    optionID: string,
+    questionID: string,
+    isSelecting: true
+} | {
+    type: "SET_SELECTED_OPTION",
+    questionID: string,
+    isSelecting: false
+} | {
+    type: "SET_PRICES",
+    prices: number[]
 }

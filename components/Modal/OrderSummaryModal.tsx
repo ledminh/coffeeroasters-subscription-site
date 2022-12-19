@@ -27,7 +27,7 @@ const OrderSummaryModal:OrderSummaryModalComponent = ({show, setShow}) => {
                 <p className={styles.prompt}>Is this correct? You can proceed to checkout or go back to plan selection if something is off. Subscription discount codes can also be redeemed at the checkout.</p>
             </div>
             <div className={styles.footer}>
-                <span className={styles.priceOutside}>$11.32/mo</span>
+                <span className={styles.priceOutside}>$11.32/week</span>
                 <button className={styles.button}>
                     Checkout <span className={styles.priceInside}>- $11.32/mo</span>
                 </button>

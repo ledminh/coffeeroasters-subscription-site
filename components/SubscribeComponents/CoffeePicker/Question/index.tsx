@@ -5,36 +5,34 @@ import Option, { OptionPropsType } from "../Option";
 import styles from './Question.module.scss';
 
 import ArrowIcon from '../../../../assets/images/plan/desktop/icon-arrow.svg';
-import { navNameType, questionType } from "../hooks/reducer";
+
+import { navNameType, questionType, QuestionType, OptionType } from "../../../../types";
 
 /***************************
  *  Types
  */
-export interface QuestionPropsType {
-    question: questionType,
+export type QuestionPropsType = {
     status: 'opened' | 'closed' | 'disabled',
-    selectedOption: string | null,
-    options: OptionPropsType[],
-    navName: navNameType,
-    toggleQuestion: (navName: navNameType) => void,
-    toggleOption: (option: string, question: questionType) => void,
-} 
+    selectedOption: OptionType | null,
+    toggleQuestion: (questionID: string) => void,
+    toggleOption: (optionID: string, questionID: string) => void,
+} & QuestionType;
 
-type QuestionType = FunctionComponent<QuestionPropsType>
+type QuestionComponentType = FunctionComponent<QuestionPropsType>
 
 
 
 /***************************
  *  Main Component
  */
-const Question:QuestionType = ({question, options, status, selectedOption, navName, toggleQuestion, toggleOption}) => {
+const Question:QuestionComponentType = ({id, prompt, options, status, selectedOption, toggleQuestion, toggleOption}) => {
 
     return (
         <div className={styles.wrapper}>
             <div className={`${styles.question} ${styles[status]}`}
-                onClick={() => status !== 'disabled'? toggleQuestion(navName) : null}
+                onClick={() => status !== 'disabled'? toggleQuestion(id) : null}
             >
-                <h3 className={`${styles.text} ${styles[status]}`}>{question}</h3>
+                <h3 className={`${styles.text} ${styles[status]}`}>{prompt}</h3>
                 <div className={`${styles.arrow} ${styles[status]}`}>
                     <ArrowIcon />
                 </div>
@@ -43,10 +41,11 @@ const Question:QuestionType = ({question, options, status, selectedOption, navNa
                 {
                     options.map(opt => (
                         <Option 
-                            key={opt.name}
-                            question={question}
+                            key={opt.id}
+                            id={opt.id}
+                            questionID={id}
                             name={opt.name}
-                            selected={opt.name === selectedOption}
+                            selected={opt.name === selectedOption?.name}
                             description={opt.description}
                             toggleOption={toggleOption}
                         />

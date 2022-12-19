@@ -17,3 +17,18 @@ export const addSeclectedOption = (question:QuestionFromServer) => {
         selectedOption: null
     };
 };
+
+export const addPrice = (question:QuestionFromServer) => {
+
+    if(question.navName === 'Deliveries') {
+        return {
+            ...question,
+            options: question.options.map(op => ({
+                ...op,
+                price: null
+            }))
+        }
+    }
+
+    return question;
+}

@@ -1,32 +1,30 @@
 import { FunctionComponent } from "react";
-import { questionType } from "../hooks/reducer";
+import { OptionType, questionType } from "../../../../types";
 
 import styles from './Option.module.scss';
 
 /***************************
  *  Types
  */
-export interface OptionPropsType {
-    question: questionType,
-    name: string,
-    description: string,
+export type OptionPropsType = {
+    questionID: string,
     selected: boolean,
-    toggleOption: (option: string, question: questionType) => void,
-} 
+    toggleOption: (optionID: string, questionID: string) => void,
+} & OptionType;
 
-type OptionType = FunctionComponent<OptionPropsType>
+type OptionComponentType = FunctionComponent<OptionPropsType>
 
 
 
 /***************************
  *  Main Component
  */
-const Option:OptionType = ({question, name, description, selected, toggleOption}) => {
+const Option:OptionComponentType = ({id, questionID, name, description, selected, toggleOption, price}) => {
 
     const handleClick = () => {
-        toggleOption(name, question);
+        toggleOption(id, questionID);
 
-    }
+    };
 
     return (
         <div className={`${styles.wrapper} ${selected? styles.selected : ''}`}

@@ -6,32 +6,23 @@ import Result from "./Result";
 
 
 import useData from "./hooks/useData";
-import { QuestionFromServer } from "../../../pages/subscribe";
 import Navigator from "./Navigator";
-import { SummaryType } from "./CreateMyPlanButton";
+import useDisableButton from "./hooks/useDisableButton";
 
+import { QuestionType, pricesType, SummaryType } from "../../../types";
 
 interface CoffeePickerProps {
-    questionsFromServer: QuestionFromServer[],
-    onClick: (summary: SummaryType) => void
+    questionsFromServer: QuestionType[],
+    onClick: (summary: SummaryType) => void,
+    prices: pricesType
 }
 
 type CoffeePickerType = FunctionComponent<CoffeePickerProps>;
 
-const CoffeePicker:CoffeePickerType = ({questionsFromServer, onClick}) => {
-    const {questions, toggleQuestion, toggleOption} = useData(questionsFromServer);
+const CoffeePicker:CoffeePickerType = ({questionsFromServer, onClick, prices}) => {
+    const {questions, toggleQuestion, toggleOption} = useData(questionsFromServer, prices);
 
-    const [isSelectedAll, setIsSelectedAll] = useState(false);
-
-    useEffect(() => {
-        for(let i= 0; i < questions.length; i++) {
-            if(questions[i].selectedOption === null)
-                return setIsSelectedAll(false);
-        }
-
-        setIsSelectedAll(true);
-
-    }, [questions]);
+    const {isButtonDisabled} = useDisableButton(questions);
 
     return (
         <div className={styles.wrapper}>
@@ -50,8 +41,9 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer, onClick}) => {
                     {
                         questions.map(q => (
                             <Question
-                                key={q.question}
-                                question={q.question}
+                                key={q.id}
+                                id={q.id}
+                                prompt={q.prompt}
                                 status={q.status}
                                 selectedOption={q.selectedOption}
                                 options={q.options}
@@ -63,17 +55,17 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer, onClick}) => {
                     }
                 </div>            
                 <Result 
-                    preferences={questions[0].selectedOption}
-                    beanType={questions[1].selectedOption}
-                    quantity={questions[2].selectedOption}
-                    grindOption={questions[3].selectedOption}
-                    delivery={questions[4].selectedOption}
+                    preferences={questions[0].selectedOption? questions[0].selectedOption.name : null}
+                    beanType={questions[1].selectedOption? questions[1].selectedOption.name : null}
+                    quantity={questions[2].selectedOption? questions[2].selectedOption.name : null} 
+                    grindOption={questions[3].selectedOption? questions[3].selectedOption.name : null}
+                    delivery={questions[4].selectedOption? questions[4].selectedOption.name : null}
                 />
                 <div className={styles.createMyPlanButton}>
                     <CreateMyPlanButton
                         onClick={onClick}
                         questions={questions}
-                        disabled={!isSelectedAll}
+                        disabled={isButtonDisabled}
                     />
                 </div>
             </div>

@@ -8,25 +8,17 @@ import { GetServerSideProps } from 'next';
 import Modals from '../components/Modal';
 
 import {useState} from 'react';
-import { SummaryType } from '../components/SubscribeComponents/CoffeePicker/CreateMyPlanButton';
+
+import { QuestionType, pricesType, SummaryType } from '../types';
 
 /**********************************
  * Interface for the props object
  */
-export type QuestionFromServer = {
-    navName: string,
-    question: string,
-    options: {
-        name: string,
-        description: string
-    }[]
-}
-
 
 interface SubscribeProps {
-    questionsFromServer: QuestionFromServer[]
+    questionsFromServer: QuestionType[],
+    prices: pricesType
 }
-
 
 
 
@@ -34,7 +26,7 @@ interface SubscribeProps {
  * Subscribe page
  */
 
-const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer}) => {
+const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer, prices}) => {
     const [isModalShow, setIsModalShow] = useState(false);
     const [summary, setSummary] = useState<SummaryType|null>(null);
 
@@ -47,6 +39,7 @@ const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer}) => {
                 />
             <CoffeePicker
                 questionsFromServer={questionsFromServer}
+                prices={prices}
                 onClick={(summary) => {
                     setSummary(summary);
                     setIsModalShow(true);
@@ -69,20 +62,25 @@ export default Subscribe;
  */
 export const getServerSideProps:GetServerSideProps = async () =>{
 
-  return { props: { questionsFromServer: [
+  return { props: { 
+    questionsFromServer: [
     {
+        id: 'question1',
         navName: 'Preferences',    
         question: "How do you drink your coffee?",
         options: [
             {
+                id: 'question1-option1',
                 name: 'Capsule',
                 description: 'Compatible with Nespresso systems and similar brewers'
             },
             {
+                id: 'question1-option2',
                 name: 'Filter',
                 description: 'For pour over or drip methods like Aeropress, Chemex, and V60'
             },
             {
+                id: 'question1-option3',
                 name: 'Espresso',
                 description: 'Dense and finely ground beans for an intense, flavorful experience'
             }        
@@ -90,18 +88,22 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     },
 
     {
+        id: 'question2',
         navName: 'Bean Type',
         question: "What type of coffee?",
         options: [
             {
+                id: 'question2-option1',
                 name: 'Single origin',
                 description: 'Distinct, high quality coffee from a specific family-owned farm'
             },
             {
+                id: 'question2-option2',
                 name: 'Decaf',
                 description: 'Just like regular coffee, except the caffeine has been removed'
             },
             {
+                id: 'question2-option3',
                 name: 'Blended',
                 description: 'Combination of two or three dark roasted beans of organic coffees'
             }        
@@ -109,18 +111,22 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     },
 
     {
+        id: 'question3',
         navName: 'Quantity',
         question: "How much would you like?",
         options: [
             {
+                id: 'question3-option1',
                 name: '250g',
                 description: 'Perfect for the solo drinker. Yields about 12 delicious cups.'
             },
             {
+                id: 'question3-option2',
                 name: '500g',
                 description: 'Perfect option for a couple. Yields about 40 delectable cups.'
             },
             {
+                id: 'question3-option3',
                 name: '1000g',
                 description: 'Perfect for offices and events. Yields about 90 delightful cups.'
             }        
@@ -128,18 +134,22 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     },
 
     {
+        id: 'question4',
         navName: 'Grind Option',
         question: "Want us to grind them?",
         options: [
             {
+                id: 'question4-option1',
                 name: 'Wholebean',
                 description: 'Best choice if you cherish the full sensory experience'
             },
             {
+                id: 'question4-option2',
                 name: 'Filter',
                 description: 'For drip or pour-over coffee methods such as V60 or Aeropress'
             },
             {
+                id: 'question4-option3',
                 name: 'Cafetiére',
                 description: 'Course ground beans specially suited for french press coffee'
             }        
@@ -147,24 +157,36 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     },
 
     {
+        id: 'question5',
         navName: 'Deliveries',
         question: "How often should we deliver?",
         options: [
             {
+                id: 'question5-option1',
                 name: 'Every week',
                 description: '$14.00 per shipment. Includes free first-class shipping.'
             },
             {
+                id: 'question5-option2',
                 name: 'Every 2 weeks',
                 description: '$17.25 per shipment. Includes free priority shipping.'
             },
             {
+                id: 'question5-option3',
                 name: 'Every month',
                 description: '$22.50 per shipment. Includes free priority shipping.'
             }        
         ]
     }
-  ]}}
+    ],
+
+    prices: {
+        '250g': [7.2, 9.6, 12],
+        '500g': [13, 17.5, 22],
+        '1000g': [22, 32, 42]
+    }
+
+    }}
 }
 
 

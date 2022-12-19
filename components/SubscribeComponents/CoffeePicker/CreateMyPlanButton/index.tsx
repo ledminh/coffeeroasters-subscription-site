@@ -2,14 +2,13 @@ import { FunctionComponent } from "react";
 
 import styles from './CreateMyPlanButton.module.scss';
 
-import { QuestionDataType } from "../hooks/useData";
+
+import { SummaryType, QuestionDataType } from "../../../../types";
 
 /***************************
  *  Types
  */
-export type SummaryType = {
-    [key: string]: string | null
-};
+
 
 interface CreateMyPlanButtonPropsType {
     onClick: (summary: SummaryType) => void,
@@ -29,11 +28,11 @@ const CreateMyPlanButton:CreateMyPlanButtonType = ({onClick, questions, disabled
 
     const handleClick = () => {
         onClick({
-            'Preferences': questions[0].selectedOption,
-            'Bean Type': questions[1].selectedOption,
-            'Quantity': questions[2].selectedOption,
-            'Grind Option': questions[3].selectedOption,
-            'Delivery': questions[4].selectedOption,
+            'Preferences': questions[0].selectedOption? questions[0].selectedOption.name : null,
+            'Bean Type': questions[1].selectedOption? questions[1].selectedOption.name : null,
+            'Quantity': questions[2].selectedOption? questions[2].selectedOption.name : null,
+            'Grind Option': questions[3].selectedOption? questions[3].selectedOption.name : null,
+            'Deliveries': questions[4].selectedOption? questions[4].selectedOption.name : null,
         });
     };
 
