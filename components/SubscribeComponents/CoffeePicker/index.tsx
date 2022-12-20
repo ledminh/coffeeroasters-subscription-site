@@ -28,9 +28,10 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer, onClick, prices}) =
         <div className={styles.wrapper}>
             <div className={styles.nav}>
                 <Navigator 
-                    questions={questions.map(q => ({
+                    navInfos={questions.map(q => ({
                         navName: q.navName,
                         status: q.status,
+                        questionID: q.id,
                         isOptionSelected: q.selectedOption !== null
                     }))}
                     toggleQuestion={toggleQuestion}

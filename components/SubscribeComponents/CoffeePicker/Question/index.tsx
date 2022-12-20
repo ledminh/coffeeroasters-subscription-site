@@ -1,12 +1,12 @@
 import { FunctionComponent } from "react";
 
-import Option, { OptionPropsType } from "../Option";
+import Option from "../Option";
 
 import styles from './Question.module.scss';
 
 import ArrowIcon from '../../../../assets/images/plan/desktop/icon-arrow.svg';
 
-import { navNameType, questionType, QuestionType, OptionType } from "../../../../types";
+import { QuestionType, OptionType } from "../../../../types";
 
 /***************************
  *  Types
