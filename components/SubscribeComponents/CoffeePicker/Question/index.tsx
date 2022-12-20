@@ -45,6 +45,7 @@ const Question:QuestionComponentType = ({id, prompt, options, status, selectedOp
                             id={opt.id}
                             questionID={id}
                             name={opt.name}
+                            price={opt.price}
                             selected={opt.name === selectedOption?.name}
                             description={opt.description}
                             toggleOption={toggleOption}

@@ -30,10 +30,7 @@ const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer, prices}) => {
     const [isModalShow, setIsModalShow] = useState(false);
     const [summary, setSummary] = useState<SummaryType|null>(null);
 
-    // useEffect(() => {
-    //     console.log('Summary: ', summary);
 
-    // }, [summary]);
 
 
     return (
@@ -68,7 +65,7 @@ export default Subscribe;
  */
 export const getServerSideProps:GetServerSideProps = async () =>{
 
-  return { props: { 
+return { props: { 
     questionsFromServer: [
     {
         id: 'question1',
@@ -170,17 +167,17 @@ export const getServerSideProps:GetServerSideProps = async () =>{
             {
                 id: 'question5-option1',
                 name: 'Every week',
-                description: '$14.00 per shipment. Includes free first-class shipping.'
+                description: 'Includes free first-class shipping.'
             },
             {
                 id: 'question5-option2',
                 name: 'Every 2 weeks',
-                description: '$17.25 per shipment. Includes free priority shipping.'
+                description: 'Includes free priority shipping.'
             },
             {
                 id: 'question5-option3',
                 name: 'Every month',
-                description: '$22.50 per shipment. Includes free priority shipping.'
+                description: 'Includes free priority shipping.'
             }        
         ]
     }

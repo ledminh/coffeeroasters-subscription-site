@@ -31,7 +31,7 @@ const Option:OptionComponentType = ({id, questionID, name, description, selected
             onClick={handleClick}
             >
             <h3 className={styles.name}>{name}</h3>
-            <div className={styles.description}>{description}</div>
+            <div className={styles.description}>{price? '$' + price + " per shipment. " + description: description}</div>
         </div>
     )
 }
