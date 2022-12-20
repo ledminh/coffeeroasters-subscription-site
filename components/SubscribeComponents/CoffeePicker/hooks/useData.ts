@@ -263,6 +263,10 @@ const useData: useDataType = (questionsFromServer, prices) => {
             const nextQuestionDOM = document.getElementById(nextQuestionID);
             if(nextQuestionDOM) nextQuestionDOM.scrollIntoView({behavior: "smooth", block: "center"});
         }
+        else {
+            const resultDiv = document.getElementById("result");
+            if(resultDiv) resultDiv.scrollIntoView({behavior: "smooth", block: "center"});
+        }
     }
     
     return {
