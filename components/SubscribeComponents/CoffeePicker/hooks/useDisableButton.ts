@@ -1,4 +1,4 @@
-import { QuestionDataType } from "./useData";
+import { QuestionDataType } from "../../../../types";
 import { useState, useEffect } from "react";
 
 
@@ -7,7 +7,7 @@ const useDisableButton = (questions:QuestionDataType[]) => {
     const [isSelectedAll, setIsSelectedAll] = useState(false);
 
     useEffect(() => {
-        let isCapsule = questions[0].selectedOption === 'Capsule';
+        let isCapsule = questions[0].selectedOption?.name === 'Capsule';
         
         for(let i= 0; i < questions.length; i++) {  
             if(i === 3) {

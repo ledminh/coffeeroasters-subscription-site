@@ -77,6 +77,7 @@ const useData: useDataType = (questionsFromServer, prices) => {
 
         if(isSelected(preferenceQuestionID, capsuleOptionID)) {
             disable(grindQuestionID);
+            deselectOption(grindQuestionID);
         }
         else {
             close(grindQuestionID);
