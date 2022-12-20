@@ -103,6 +103,15 @@ const useData: useDataType = (questionsFromServer, prices) => {
     }
 
 
+    const getNextQuestion = (questionID:string) => {
+        for(let i = 0; i < questions.length; i++) {
+            if(questions[i].id === questionID) {
+                if(i === questions.length - 1) return null;
+
+                return questions[i + 1];
+            }
+        }
+    }
 
 
     const getOption = (optionID:string, questionID:string) => {
@@ -219,16 +228,42 @@ const useData: useDataType = (questionsFromServer, prices) => {
 
         if(option === null) return;
 
-
         if(isSelected(questionID, optionID)) {
             deselectOption(questionID);
         } else { 
-            selectOption(questionID, optionID);            
+            selectOption(questionID, optionID);
+
+            openNextQuestion(questionID);
+            
+            moveToNextQuestion(questionID);
+            
         }
         
     }
 
+    const openNextQuestion = (questionID:string) => {
+        const nextQuestion = getNextQuestion(questionID);
+            
+        if(nextQuestion) {
+            if(nextQuestion.status === "disabled") {
+                const nextNextQuestion = getNextQuestion(nextQuestion.id);
+                if(nextNextQuestion) open(nextNextQuestion.id);
+            } else {
+                open(nextQuestion.id);
+            }
+        }
+    }
     
+
+    const moveToNextQuestion = (questionID:string) => {
+        const nextQuestion = getNextQuestion(questionID);
+
+        if(nextQuestion) {
+            const nextQuestionID = nextQuestion.id;
+            const nextQuestionDOM = document.getElementById(nextQuestionID);
+            if(nextQuestionDOM) nextQuestionDOM.scrollIntoView({behavior: "smooth", block: "center"});
+        }
+    }
     
     return {
         questions,

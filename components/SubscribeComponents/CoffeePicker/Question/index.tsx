@@ -28,7 +28,7 @@ type QuestionComponentType = FunctionComponent<QuestionPropsType>
 const Question:QuestionComponentType = ({id, prompt, options, status, selectedOption, toggleQuestion, toggleOption}) => {
 
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper} id={id}>
             <div className={`${styles.question} ${styles[status]}`}
                 onClick={() => status !== 'disabled'? toggleQuestion(id) : null}
             >

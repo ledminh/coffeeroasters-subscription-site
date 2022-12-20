@@ -1,15 +1,19 @@
-import { QuestionFromServer } from "../../../../pages/subscribe";
+import { QuestionType } from "../../../../types";
 
-export const addStatus = (question:QuestionFromServer) => {
-    
+export const addStatus = (question:QuestionType) => {
+    let status = 'closed';
+
+    if(question.navName === 'Preferences') {
+        status = 'opened';
+    }
 
     return {
         ...question,
-        status: 'closed'
+        status: status
     };
 }
 
-export const addSeclectedOption = (question:QuestionFromServer) => {
+export const addSeclectedOption = (question:QuestionType) => {
     
 
     return {
@@ -18,7 +22,7 @@ export const addSeclectedOption = (question:QuestionFromServer) => {
     };
 };
 
-export const addPrice = (question:QuestionFromServer) => {
+export const addPrice = (question:QuestionType) => {
 
     if(question.navName === 'Deliveries') {
         return {
