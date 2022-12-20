@@ -10,8 +10,12 @@
 
     cursor: pointer;
 
+    transition: all .2s ease-in-out;
+
     &:hover {
         background-color: #FDD6BA;
+
+        transform: translateY(-6px);
     }
 
     &.selected {
