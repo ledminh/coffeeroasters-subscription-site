@@ -7,7 +7,7 @@ import CoffeePicker from '../components/SubscribeComponents/CoffeePicker';
 import { GetServerSideProps } from 'next';
 import Modals from '../components/Modal';
 
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 
 import { QuestionType, pricesType, SummaryType } from '../types';
 
@@ -27,7 +27,7 @@ interface SubscribeProps {
  */
 
 const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer, prices}) => {
-    const [isModalShow, setIsModalShow] = useState(false);
+    const [isOrderSummaryModalShow, setIsOrderSummaryModalShow] = useState(false);
     const [summary, setSummary] = useState<SummaryType|null>(null);
 
 
@@ -45,15 +45,16 @@ const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer, prices}) => {
                 prices={prices}
                 onClick={(summary) => {
                     setSummary(summary);
-                    setIsModalShow(true);
+                    setIsOrderSummaryModalShow(true);
                 }}
                 />
             {
                 summary === null? null:   
                 <Modals 
-                    show={isModalShow}
-                    setShow={setIsModalShow}
+                    isOrderSummaryModalShow={isOrderSummaryModalShow}
+                    setIsOrderSummaryModalShow={setIsOrderSummaryModalShow}
                     summary={summary}
+                    onClickCheckout={(totalPrice) => {console.log(totalPrice)}}
                     />
             }
 

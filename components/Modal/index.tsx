@@ -8,9 +8,10 @@ import OrderSummaryModal from "./OrderSummaryModal";
  *  Types
  */
 interface ModalsProps {
-    show: boolean,
-    setShow: (show:boolean) => void,
-    summary: SummaryType
+    isOrderSummaryModalShow: boolean,
+    setIsOrderSummaryModalShow: (show: boolean) => void,
+    summary: SummaryType,
+    onClickCheckout: (total: number) => void
 }
 
 type ModalsType = FunctionComponent<ModalsProps>;
@@ -21,15 +22,16 @@ type ModalsType = FunctionComponent<ModalsProps>;
  *  Main Component
  */
 
-const Modals:ModalsType = ({show, setShow, summary}) => {
+const Modals:ModalsType = ({isOrderSummaryModalShow, setIsOrderSummaryModalShow, summary, onClickCheckout}) => {
 
 
     return (
         <>
             <OrderSummaryModal
-                show={show}
-                setShow={setShow}
+                show={isOrderSummaryModalShow}
+                setShow={setIsOrderSummaryModalShow}
                 summary={summary}
+                onClick={onClickCheckout}
             />
             <div className="modal-root"></div>
         </>

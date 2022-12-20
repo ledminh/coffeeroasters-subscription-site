@@ -10,13 +10,14 @@ import { useState } from "react";
 interface OrderSummaryModalProps  {
     show: boolean;
     setShow: (show:boolean) => void;
-    summary: SummaryType
+    summary: SummaryType,
+    onClick: (total: number) => void
 };
 
 type OrderSummaryModalComponent = FunctionComponent<OrderSummaryModalProps>;
 
 
-const OrderSummaryModal:OrderSummaryModalComponent = ({show, setShow, summary}) => {
+const OrderSummaryModal:OrderSummaryModalComponent = ({show, setShow, summary, onClick}) => {
     
     const {Preferences, "Bean Type": beanType, Quantity, "Grind Option": grindOption, Deliveries, price} = summary;
 
@@ -38,6 +39,12 @@ const OrderSummaryModal:OrderSummaryModalComponent = ({show, setShow, summary}) 
 
     }, [price, Deliveries])
 
+
+    const handleCheckout = () => {
+        setShow(false);
+        onClick(total);
+    }
+
     return (
         <Modal show={show}
                 onClose={() => setShow(false)}
@@ -51,8 +58,10 @@ const OrderSummaryModal:OrderSummaryModalComponent = ({show, setShow, summary}) 
             </div>
             <div className={styles.footer}>
                 <span className={styles.priceOutside}>${total}/mo</span>
-                <button className={styles.button}>
-                    Checkout <span className={styles.priceInside}>- $11.32/mo</span>
+                <button className={styles.button}
+                        onClick={handleCheckout}
+                    >
+                    Checkout <span className={styles.priceInside}>- ${total}/mo</span>
                 </button>
             </div>
         </Modal>
