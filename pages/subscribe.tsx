@@ -48,10 +48,15 @@ const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer, prices}) => {
                     setIsModalShow(true);
                 }}
                 />
-            <Modals 
-                show={isModalShow}
-                setShow={setIsModalShow}
-                />
+            {
+                summary === null? null:   
+                <Modals 
+                    show={isModalShow}
+                    setShow={setIsModalShow}
+                    summary={summary}
+                    />
+            }
+
         </PageLayout>
     )
 };

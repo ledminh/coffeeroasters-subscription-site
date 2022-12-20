@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react";
+import { SummaryType } from "../../types";
 import OrderSummaryModal from "./OrderSummaryModal";
 
 
@@ -8,7 +9,8 @@ import OrderSummaryModal from "./OrderSummaryModal";
  */
 interface ModalsProps {
     show: boolean,
-    setShow: (show:boolean) => void
+    setShow: (show:boolean) => void,
+    summary: SummaryType
 }
 
 type ModalsType = FunctionComponent<ModalsProps>;
@@ -19,7 +21,7 @@ type ModalsType = FunctionComponent<ModalsProps>;
  *  Main Component
  */
 
-const Modals:ModalsType = ({show, setShow}) => {
+const Modals:ModalsType = ({show, setShow, summary}) => {
 
 
     return (
@@ -27,6 +29,7 @@ const Modals:ModalsType = ({show, setShow}) => {
             <OrderSummaryModal
                 show={show}
                 setShow={setShow}
+                summary={summary}
             />
             <div className="modal-root"></div>
         </>
