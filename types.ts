@@ -76,4 +76,6 @@ export type pricesType = {
  */
 export type SummaryType = {
     [key in navNameType]: 'Capsule' | 'Filter' | 'Espresso' | 'Single origin' | 'Decaf' | 'Blended' | '250g' | '500g' | '1000g' | 'Wholebean' | 'Filter' | 'Cafetiere' | 'Every week' | 'Every 2 weeks' | 'Every month' | null
+} & {
+    price: number | null
 };

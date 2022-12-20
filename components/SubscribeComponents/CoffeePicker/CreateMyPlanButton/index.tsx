@@ -33,6 +33,7 @@ const CreateMyPlanButton:CreateMyPlanButtonType = ({onClick, questions, disabled
             'Quantity': questions[2].selectedOption? questions[2].selectedOption.name : null,
             'Grind Option': questions[3].selectedOption? questions[3].selectedOption.name : null,
             'Deliveries': questions[4].selectedOption? questions[4].selectedOption.name : null,
+            price: questions[4].selectedOption? questions[4].selectedOption.price? questions[4].selectedOption.price : null : null
         });
     };
 

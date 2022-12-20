@@ -1,9 +1,11 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { SummaryType } from "../../types";
 
 import Modal from "./Modal";
 
 import styles from './OrderSummaryModal.module.scss';
+
+import { useState } from "react";
 
 interface OrderSummaryModalProps  {
     show: boolean;
@@ -16,7 +18,25 @@ type OrderSummaryModalComponent = FunctionComponent<OrderSummaryModalProps>;
 
 const OrderSummaryModal:OrderSummaryModalComponent = ({show, setShow, summary}) => {
     
-    const {Preferences, "Bean Type": beanType, Quantity, "Grind Option": grindOption, Deliveries} = summary;
+    const {Preferences, "Bean Type": beanType, Quantity, "Grind Option": grindOption, Deliveries, price} = summary;
+
+    const [total, setTotal] = useState(0);
+
+
+    useEffect(() => {
+        if(price) {
+            if(Deliveries === 'Every week') {
+                setTotal(price * 4);
+            }
+            else if(Deliveries === 'Every 2 weeks') {
+                setTotal(price * 2);
+            }
+            else if(Deliveries === 'Every month') {
+                setTotal(price);
+            }
+        }
+
+    }, [price, Deliveries])
 
     return (
         <Modal show={show}
@@ -30,7 +50,7 @@ const OrderSummaryModal:OrderSummaryModalComponent = ({show, setShow, summary}) 
                 <p className={styles.prompt}>Is this correct? You can proceed to checkout or go back to plan selection if something is off. Subscription discount codes can also be redeemed at the checkout.</p>
             </div>
             <div className={styles.footer}>
-                <span className={styles.priceOutside}>$11.32/week</span>
+                <span className={styles.priceOutside}>${total}/mo</span>
                 <button className={styles.button}>
                     Checkout <span className={styles.priceInside}>- $11.32/mo</span>
                 </button>
