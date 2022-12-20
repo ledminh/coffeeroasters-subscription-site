@@ -10,7 +10,7 @@ export type OptionType = {
 
 
 interface PreferencesOptionType  {
-    name: 'Capsules' | 'Filter' | 'Espresso';
+    name: 'Capsule' | 'Filter' | 'Espresso';
 }
 
 interface BeanOptionType  {
@@ -75,5 +75,5 @@ export type pricesType = {
  * SummaryType
  */
 export type SummaryType = {
-    [key in navNameType]: 'Capsules' | 'Filter' | 'Espresso' | 'Single origin' | 'Decaf' | 'Blended' | '250g' | '500g' | '1000g' | 'Wholebean' | 'Filter' | 'Cafetiere' | 'Every week' | 'Every 2 weeks' | 'Every month' | null
+    [key in navNameType]: 'Capsule' | 'Filter' | 'Espresso' | 'Single origin' | 'Decaf' | 'Blended' | '250g' | '500g' | '1000g' | 'Wholebean' | 'Filter' | 'Cafetiere' | 'Every week' | 'Every 2 weeks' | 'Every month' | null
 };

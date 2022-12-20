@@ -7,7 +7,7 @@ import CoffeePicker from '../components/SubscribeComponents/CoffeePicker';
 import { GetServerSideProps } from 'next';
 import Modals from '../components/Modal';
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import { QuestionType, pricesType, SummaryType } from '../types';
 
@@ -29,6 +29,12 @@ interface SubscribeProps {
 const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer, prices}) => {
     const [isModalShow, setIsModalShow] = useState(false);
     const [summary, setSummary] = useState<SummaryType|null>(null);
+
+    // useEffect(() => {
+    //     console.log('Summary: ', summary);
+
+    // }, [summary]);
+
 
     return (
         <PageLayout>
@@ -67,7 +73,7 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     {
         id: 'question1',
         navName: 'Preferences',    
-        question: "How do you drink your coffee?",
+        prompt: "How do you drink your coffee?",
         options: [
             {
                 id: 'question1-option1',
@@ -90,7 +96,7 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     {
         id: 'question2',
         navName: 'Bean Type',
-        question: "What type of coffee?",
+        prompt: "What type of coffee?",
         options: [
             {
                 id: 'question2-option1',
@@ -113,7 +119,7 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     {
         id: 'question3',
         navName: 'Quantity',
-        question: "How much would you like?",
+        prompt: "How much would you like?",
         options: [
             {
                 id: 'question3-option1',
@@ -136,7 +142,7 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     {
         id: 'question4',
         navName: 'Grind Option',
-        question: "Want us to grind them?",
+        prompt: "Want us to grind them?",
         options: [
             {
                 id: 'question4-option1',
@@ -159,7 +165,7 @@ export const getServerSideProps:GetServerSideProps = async () =>{
     {
         id: 'question5',
         navName: 'Deliveries',
-        question: "How often should we deliver?",
+        prompt: "How often should we deliver?",
         options: [
             {
                 id: 'question5-option1',

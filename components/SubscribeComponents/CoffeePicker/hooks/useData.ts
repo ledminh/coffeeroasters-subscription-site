@@ -31,18 +31,60 @@ const useData: useDataType = (questionsFromServer, prices) => {
     const [questions, dispatch] = useReducer(reducer, processedQuestions);
 
 
+    useEffect(() => disableGrindWhenCapsuleSelected()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    , [questions[0].selectedOption]);
 
-    // useEffect(() => {
-    //     const quantity = questions[2].selectedOption;
-
-    //     console.log(questions);
-
-    // }, [questions]);
+    useEffect(() => upadatePriceWhenQuantityChanges(),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [questions[2].selectedOption]);
 
 
+
+    
     /**********************************
      * Private Methods
      */    
+
+    const upadatePriceWhenQuantityChanges = () => {
+        
+        const quantityQuestionID = getQuestionID("Quantity");
+        if(!quantityQuestionID) return;
+
+        const quantityQuestion = getQuestion(quantityQuestionID);
+        if(!quantityQuestion) return;
+
+        if(quantityQuestion.selectedOption === null) return;
+
+        const quantityOption = quantityQuestion.selectedOption.name;
+
+        dispatch({
+            type: "SET_PRICES",
+            prices: prices[quantityOption as "250g" | "500g" | "1000g"]
+        })  
+    }
+
+
+    const disableGrindWhenCapsuleSelected = () => {
+        const preferenceQuestionID = getQuestionID("Preferences");
+        if(!preferenceQuestionID) return;
+
+        const capsuleOptionID = getOptionIDFromName("Capsule", preferenceQuestionID);
+        if(!capsuleOptionID) return;
+
+        const grindQuestionID = getQuestionID("Grind Option");
+        if(!grindQuestionID) return;
+
+        if(isSelected(preferenceQuestionID, capsuleOptionID)) {
+            disable(grindQuestionID);
+        }
+        else {
+            close(grindQuestionID);
+        }
+
+    }
+
+
     const getQuestion = (questionID:string) => {
         const question = questions.find((question:QuestionDataType) => question.id === questionID);
 
@@ -50,7 +92,18 @@ const useData: useDataType = (questionsFromServer, prices) => {
 
         return question;
     }
-    
+
+    const getQuestionID = (navName:navNameType) => {
+        const question = questions.find((question) => question.navName === navName);
+
+        if(!question) return null;
+
+        return question.id;
+    }
+
+
+
+
     const getOption = (optionID:string, questionID:string) => {
         const question = getQuestion(questionID);
         
@@ -63,13 +116,20 @@ const useData: useDataType = (questionsFromServer, prices) => {
         return option;
     }
     
-    const getQuestionID = (navName:navNameType) => {
-        const question = questions.find((question) => question.navName === navName);
+    const getOptionIDFromName = (optionName:string, questionID:string) => {
+        const question = getQuestion(questionID);
 
         if(!question) return null;
 
-        return question.id;
+        const option = question.options.find((option) => option.name === optionName);
+
+        if(!option) return null;
+
+        return option.id;
+
     }
+
+    
 
 
     const close = (questionID:string) => {
@@ -160,47 +220,10 @@ const useData: useDataType = (questionsFromServer, prices) => {
 
 
         if(isSelected(questionID, optionID)) {
-            
             deselectOption(questionID);
-            
-            if(option.name === 'Capsules') { // if Capsules is deselected, enable Grind Option (turn it to closed)
-                const grindQuestionID = getQuestionID("Grind Option");
-    
-                if(grindQuestionID === null) return;
-    
-                close(grindQuestionID);        
-            }
-            
-        } else { // if option is not selected, select it
-
-            selectOption(questionID, optionID);
-
-            if(option.name === 'Capsules') { // if Capsules is selected, disable Grind Option
-                const grindQuestionID = getQuestionID("Grind Option");
-
-                if(grindQuestionID === null) return;
-
-                disable(grindQuestionID);
-            }
-
-
-            // if Quantity is selected, set prices
-            const question = getQuestion(questionID);
-
-            if(question === null) return;
-
-            const { navName: navName } = question;
-
-            if(navName === 'Quantity') {
-                dispatch({
-                    type: 'SET_PRICES',
-                    prices: prices[option.name as keyof pricesType]
-                });
-            }
-            
+        } else { 
+            selectOption(questionID, optionID);            
         }
-
-        
         
     }
 
