@@ -1,6 +1,8 @@
 import { FunctionComponent } from "react";
 
 import Modal from "./Modal";
+import styles from './TemplatNameModal.module.scss';
+
 
 interface TemplateNameModalProps  {
     show: boolean;
@@ -14,8 +16,10 @@ const TemplateNameModal:TemplateNameModalComponent = ({show, setShow}) => {
     
     
     return (
-        <Modal show={show}>
-            
+        <Modal show={show}
+            onClose={() => setShow(false)}
+        >
+            TemplateName Modal
         </Modal>
     )
 

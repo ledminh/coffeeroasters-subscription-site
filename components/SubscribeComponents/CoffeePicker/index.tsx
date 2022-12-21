@@ -1,7 +1,5 @@
 import { FunctionComponent} from "react";
 
-import { PayPalButtons } from "@paypal/react-paypal-js";
-
 import styles from './CoffeePicker.module.scss';
 import CreateMyPlanButton from "./CreateMyPlanButton";
 import Question from "./Question";
@@ -72,27 +70,6 @@ const CoffeePicker:CoffeePickerType = ({questionsFromServer, onClick, prices}) =
                         disabled={isButtonDisabled}
                     />
                 </div>
-                <PayPalButtons style={{ layout: "horizontal" }}
-                        createOrder={(data, actions) => {
-                            return actions.order.create({
-                                purchase_units: [
-                                    {
-                                        amount: {
-                                            value: "1.99",
-                                        },
-                                    },
-                                ],
-                            });
-                        }}
-                        onApprove={async (data, actions) => {
-                            if(!actions.order) return;
-                            
-                            return actions.order.capture().then((details) => {
-                                const name = details.payer.name? details.payer.name.given_name : "Anonymous";
-                                alert(`Transaction completed by ${name}`);
-                            });
-                        }}
-                    />
             </div>
         </div>
     )

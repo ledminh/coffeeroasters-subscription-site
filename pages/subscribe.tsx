@@ -7,14 +7,13 @@ import CoffeePicker from '../components/SubscribeComponents/CoffeePicker';
 import { GetServerSideProps } from 'next';
 import Modals from '../components/Modal';
 
-import {useState} from 'react';
+import { QuestionType, pricesType } from '../types';
 
-import { QuestionType, pricesType, SummaryType } from '../types';
+import useSubscribe from '../hooks/subscribeHooks';
 
 /**********************************
  * Interface for the props object
  */
-
 interface SubscribeProps {
     questionsFromServer: QuestionType[],
     prices: pricesType
@@ -25,11 +24,9 @@ interface SubscribeProps {
 /**********************************
  * Subscribe page
  */
-
 const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer, prices}) => {
-    const [isOrderSummaryModalShow, setIsOrderSummaryModalShow] = useState(false);
-    const [summary, setSummary] = useState<SummaryType|null>(null);
-
+    
+    const {totalPrice, summary, isOrderSummaryModalShow, setIsOrderSummaryModalShow, isPaymentModalShow, setIsPaymentModalShow, onClickCreatePlan, onClickCheckout} = useSubscribe();
 
 
 
@@ -43,18 +40,18 @@ const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer, prices}) => {
             <CoffeePicker
                 questionsFromServer={questionsFromServer}
                 prices={prices}
-                onClick={(summary) => {
-                    setSummary(summary);
-                    setIsOrderSummaryModalShow(true);
-                }}
+                onClick={onClickCreatePlan}
                 />
             {
                 summary === null? null:   
                 <Modals 
                     isOrderSummaryModalShow={isOrderSummaryModalShow}
                     setIsOrderSummaryModalShow={setIsOrderSummaryModalShow}
+                    isPaymentModalShow={isPaymentModalShow}
+                    setIsPaymentModalShow={setIsPaymentModalShow}
                     summary={summary}
-                    onClickCheckout={(totalPrice) => {console.log(totalPrice)}}
+                    onClickCheckout={onClickCheckout}
+                    total={totalPrice}
                     />
             }
 
