@@ -8,6 +8,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import PaymentScreen from "../PaymentScreen";
 import PaymentSuccessScreen from "../PaymentSuccessScreen";
+import usePaymentModal from "./hooks/usePaymentModal";
 
 interface PaymentModalProps  {
     show: boolean;
@@ -22,18 +23,8 @@ type PaymentModalComponent = FunctionComponent<PaymentModalProps>;
 
 const PaymentModal:PaymentModalComponent = ({show, setShow, total}) => {
     
-    const [name, setName] = useState<string|null>(null);
-    const [email, setEmail] = useState<string|null>(null);
+    const {name, email, status, onApprove, onClose} = usePaymentModal(setShow);
 
-    const onApprove = (name: string, email: string) => {
-        setName(name);
-        setEmail(email);
-    }
-
-    const onClose = () => {
-        setShow(false);
-        setName(null);
-    }
 
     return (
         <Modal show={show}
@@ -43,10 +34,10 @@ const PaymentModal:PaymentModalComponent = ({show, setShow, total}) => {
                 Payment
             </div>
             {
-                (name && email)? 
+                status === 'success'? 
                     <PaymentSuccessScreen 
-                        name={name}
-                        email={email}
+                        name={name as string}
+                        email={email as string}
                         onClose={onClose}
                     />
                     :
