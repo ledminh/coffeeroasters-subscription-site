@@ -21,9 +21,11 @@ type PaymentModalComponent = FunctionComponent<PaymentModalProps>;
 const PaymentModal:PaymentModalComponent = ({show, setShow, total}) => {
     
     const [name, setName] = useState<string|null>(null);
+    const [email, setEmail] = useState<string|null>(null);
 
-    const onApprove = (name: string) => {
+    const onApprove = (name: string, email: string) => {
         setName(name);
+        setEmail(email);
     }
 
     const onClose = () => {
@@ -39,10 +41,11 @@ const PaymentModal:PaymentModalComponent = ({show, setShow, total}) => {
                 Payment
             </div>
             {
-                name? 
+                (name && email)? 
                     <>
                         <div className={styles.body}>
                             <p>Thank you <span className={styles.name}>{name}</span> for your purchase!</p>
+                            <p>We will send you an email to <span className={styles.email}>{email}</span> with the details of your purchase.</p>
                         </div>
                         <div className={styles.footer}>
                             <button className={styles.closeButton} onClick={onClose}>Close</button>
@@ -73,10 +76,17 @@ const PaymentModal:PaymentModalComponent = ({show, setShow, total}) => {
                                             if(!actions.order) return;
                                             
                                             return actions.order.capture().then((details) => {
-                                                const name = details.payer.name?.given_name? details.payer.name.given_name : "Anonymous";
-        
-                                                onApprove(name);
+                                                const givenName = details.payer.name?.given_name?  details.payer.name.given_name : ""; 
+                                                const surname = details.payer.name?.surname?  details.payer.name.surname : "";
+                                                const name = givenName + " " + surname;
+                                                const email = details.payer.email_address? details.payer.email_address : "";
+
+                                                onApprove(name, email);
                                             });
+                                        }}
+
+                                        onCancel={() => {
+                                            setShow(false);     
                                         }}
                                     />
                         </div>

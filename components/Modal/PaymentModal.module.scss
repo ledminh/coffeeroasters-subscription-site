@@ -19,6 +19,10 @@
     
     font-size: 1.2rem;
 
+    p {
+        margin-bottom: 1rem;
+    }
+
 }
 
 .ammount {
@@ -27,6 +31,16 @@
 
     color: #0E8784;
 }
+
+
+.name,
+.email {
+    font-weight: 600;
+    font-size: 1.2rem;
+
+    color: #0E8784;
+}
+
 
 .footer {
     padding: 0 1rem;
