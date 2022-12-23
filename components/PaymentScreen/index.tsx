@@ -2,7 +2,8 @@ import { FunctionComponent } from "react";
 
 import styles from './PaymentScreen.module.scss';
 
-import { PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+
 
 /***************************
  *  Types
@@ -22,6 +23,7 @@ type PaymentScreenType = FunctionComponent<PaymentScreenPropsType>
  */
 const PaymentScreen:PaymentScreenType = ({total, onApprove, close}) => {
 
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.body}>
@@ -32,39 +34,6 @@ const PaymentScreen:PaymentScreenType = ({total, onApprove, close}) => {
                     total={total}
                     onApprove={onApprove}
                 />
-                {/* <PayPalHostedFieldsProvider
-                    createOrder={() => {
-                        // Here define the call to create and order
-                        return fetch(
-                            "/your-server-side-integration-endpoint/orders"
-                        )
-                            .then((response) => response.json())
-                            .then((order) => order.id)
-                            .catch((err) => {
-                                // Handle any error
-                            });
-                    }}
-                >
-                    <PayPalHostedField
-                        id="card-number"
-                        hostedFieldType="number"
-                        options={{ selector: "#card-number" }}
-                    />
-                    <PayPalHostedField
-                        id="cvv"
-                        hostedFieldType="cvv"
-                        options={{ selector: "#cvv" }}
-                    />
-                    <PayPalHostedField
-                        id="expiration-date"
-                        hostedFieldType="expirationDate"
-                        options={{
-                            selector: "#expiration-date",
-                            placeholder: "MM/YY",
-                        }}
-                    />
-                    <SubmitPayment />
-                </PayPalHostedFieldsProvider> */}
             </div>
         </div>
     )
@@ -88,36 +57,83 @@ type PayButtonType = FunctionComponent<PayButtonProps>;
 const PayButton:PayButtonType = ({total, onApprove}) => {
     return (
         <PayPalButtons style={{ 
-            layout: "horizontal",
+            layout: "vertical",
             color: "white", 
 
-        }}
-                createOrder={(data, actions) => {
-                    return actions.order.create({
-                        purchase_units: [
-                            {
-                                amount: {
-                                    value: total +"",
+            }}
+                createSubscription={(data, actions) => {
+                    return actions.subscription.create({
+                        plan_id: "P-0BL20044TX123340FMOSVPDQ",
+                        plan: {
+                            // plan_id: "P-0BL20044TX123340FMOSVPDQ",
+                            name: "Coffee Roasters",
+                            description: "Delicious coffee delivered to your door",
+                            status: "ACTIVE",
+                            billing_cycles: [
+                                {
+                                    frequency: {
+                                        interval_unit: "MONTH",
+                                        interval_count: "1",
+                                    },
+                                    tenure_type: "REGULAR",
+                                    sequence: "1",
+                                    total_cycles: "0",
+                                    pricing_scheme: {
+                                        fixed_price: {
+                                            value: total? total+'' : '0',
+                                            currency_code: "USD",
+                                        },
+                                    },
                                 },
+                            ],
+                            payment_preferences: {
+                                auto_bill_outstanding: true,
+                                setup_fee_failure_action: "CONTINUE",
+                                payment_failure_threshold: "3",
                             },
-                        ],
+                            tax_inclusive: false,
+                            quantity_supported: false,
+                        }
+                        
+                        
                     });
                 }}
+
+                // createOrder={(data, actions) => {
+                //     return actions.order.create({
+                //         purchase_units: [
+                //             {
+                //                 amount: {
+                //                     value: total +"",
+                //                 },
+                //             },
+                //         ],
+                //     });
+                // }}
+
+
+
                 onApprove={async (data, actions) => {
-                    if(!actions.order) return;
                     
-                    return actions.order.capture().then((details) => {
-                        const givenName = details.payer.name?.given_name?  details.payer.name.given_name : ""; 
-                        const surname = details.payer.name?.surname?  details.payer.name.surname : "";
-                        const name = givenName + " " + surname;
-                        const email = details.payer.email_address? details.payer.email_address : "";
+                    return actions?.subscription?.get().then((details) => {
+                        const given_name = (details as any).subscriber.name.given_name;
+                        const surname = (details as any).subscriber.name.surname;
+                        const name = given_name + " " + surname;
+                        const email = (details as any).subscriber.email_address;
 
                         onApprove(name, email);
-                    });
+                    })
+
+
+                    
                 }}
 
                 onCancel={() => {
                     close();     
+                }}
+
+                onError={(err) => {
+                    console.log(err);
                 }}
             />
     )
@@ -125,33 +141,85 @@ const PayButton:PayButtonType = ({total, onApprove}) => {
 
 
 
-/**********************************
- * SubmitPayment Component
- */
-// const SubmitPayment = () => {
-//     // Here declare the variable containing the hostedField instance
-//     const hostedFields = usePayPalHostedFields();
+// /***************************
+//  * Paypal Hosted Fields
+//  */
 
-//     const submitHandler = () => {
-//         if (typeof hostedFields.submit !== "function") return; // validate that `submit()` exists before using it
-//         hostedFields
-//             .submit({
-//                 // The full name as shown in the card and billing address
-//                 cardholderName: "John Wick",
-//             })
-//             .then((order) => {
-//                 fetch(
-//                     "/your-server-side-integration-endpoint/capture-payment-info"
-//                 )
-//                     .then((response) => response.json())
-//                     .then((data) => {
-//                         // Inside the data you can find all the information related to the payment
-//                     })
-//                     .catch((err) => {
-//                         // Handle any error
-//                     });
-//             });
-//     };
+// const CUSTOM_FIELD_STYLE = {"border":"1px solid #606060","boxShadow":"2px 2px 10px 2px rgba(0,0,0,0.1)"};
+// const INVALID_COLOR = {
+// 	color: "#dc3545",
+// };
 
-//     return <button onClick={submitHandler}>Pay</button>;
+// // Example of custom component to handle form submit
+// const SubmitPayment = ({ customStyle }) => {
+// 	const [paying, setPaying] = useState(false);
+// 	const cardHolderName = useRef(null);
+// 	const hostedField = usePayPalHostedFields();
+
+// 	const handleClick = () => {
+// 		if (!hostedField?.cardFields) {
+//             const childErrorMessage = 'Unable to find any child components in the <PayPalHostedFieldsProvider />';
+
+//             action(ERROR)(childErrorMessage);
+//             throw new Error(childErrorMessage);
+//         }
+// 		const isFormInvalid =
+// 			Object.values(hostedField.cardFields.getState().fields).some(
+// 				(field) => !field.isValid
+// 			) || !cardHolderName?.current?.value;
+		
+// 		if (isFormInvalid) {
+// 			return alert(
+// 				"The payment form is invalid"
+// 			);
+// 		}
+// 		setPaying(true);
+// 		hostedField.cardFields
+// 			.submit({
+// 				cardholderName: cardHolderName?.current?.value,
+// 			})
+// 			.then((data) => {
+// 				// Your logic to capture the transaction
+// 				fetch("url_to_capture_transaction", {
+// 					method: "post",
+// 				})
+// 					.then((response) => response.json())
+// 					.then((data) => {
+// 						// Here use the captured info
+// 					})
+// 					.catch((err) => {
+// 						// Here handle error
+// 					})
+// 					.finally(() => {
+// 						setPaying(false);
+// 					});
+// 			})
+// 			.catch((err) => {
+// 				// Here handle error
+// 				setPaying(false);
+// 			});
+// 	};
+
+// 	return (
+// 		<>
+//             <label title="This represents the full name as shown in the card">
+// 				Card Holder Name
+// 				<input
+// 					id="card-holder"
+// 					ref={cardHolderName}
+// 					className="card-field"
+// 					style={{ ...customStyle, outline: "none" }}
+// 					type="text"
+// 					placeholder="Full name"
+// 				/>
+// 				</label>
+// 			<button
+// 				className={`btn${paying ? "" : " btn-primary"}`}
+// 				style={{ float: "right" }}
+// 				onClick={handleClick}
+// 			>
+// 				{paying ? <div className="spinner tiny" /> : "Pay"}
+// 			</button>
+// 		</>
+// 	);
 // };
