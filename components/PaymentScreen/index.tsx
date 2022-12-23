@@ -25,7 +25,7 @@ const PaymentScreen:PaymentScreenType = ({total, onApprove, close}) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.body}>
-                <p>Your total is: <span className={styles.ammount}>${total}</span></p>
+                <p>Your total is: <span className={styles.ammount}>${Number.isInteger(total)? total : total?.toFixed(2)}</span></p>
             </div>
             <div className={styles.footer}>
                 <PayButton 

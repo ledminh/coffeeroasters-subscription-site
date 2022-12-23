@@ -57,11 +57,11 @@ const OrderSummaryModal:OrderSummaryModalComponent = ({show, setShow, summary, o
                 <p className={styles.prompt}>Is this correct? You can proceed to checkout or go back to plan selection if something is off. Subscription discount codes can also be redeemed at the checkout.</p>
             </div>
             <div className={styles.footer}>
-                <span className={styles.priceOutside}>${total}/mo</span>
+                <span className={styles.priceOutside}>${Number.isInteger(total)? total : total.toFixed(2)}/mo</span>
                 <button className={styles.button}
                         onClick={handleCheckout}
                     >
-                    Checkout <span className={styles.priceInside}>- ${total}/mo</span>
+                    Checkout <span className={styles.priceInside}>- ${Number.isInteger(total)? total : total.toFixed(2)}/mo</span>
                 </button>
             </div>
         </Modal>
