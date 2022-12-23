@@ -23,7 +23,7 @@ type PaymentModalComponent = FunctionComponent<PaymentModalProps>;
 
 const PaymentModal:PaymentModalComponent = ({show, setShow, total}) => {
     
-    const {name, email, status, onApprove, onClose} = usePaymentModal(setShow);
+    const {name, email, status, onApprove, close} = usePaymentModal(setShow);
 
 
     return (
@@ -38,13 +38,13 @@ const PaymentModal:PaymentModalComponent = ({show, setShow, total}) => {
                     <PaymentSuccessScreen 
                         name={name as string}
                         email={email as string}
-                        onClose={onClose}
+                        close={close}
                     />
                     :
                     <PaymentScreen
                         total={total}
                         onApprove={onApprove}
-                        setShow={setShow}
+                        close={close}
                     />
             }
         </Modal>

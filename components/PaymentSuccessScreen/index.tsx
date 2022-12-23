@@ -8,7 +8,7 @@ import styles from './PaymentSuccessScreen.module.scss';
 interface PaymentSuccessScreenPropsType {
     name: string;
     email: string;
-    onClose: () => void;
+    close: () => void;
 } 
 
 type PaymentSuccessScreenType = FunctionComponent<PaymentSuccessScreenPropsType>
@@ -18,7 +18,7 @@ type PaymentSuccessScreenType = FunctionComponent<PaymentSuccessScreenPropsType>
 /***************************
  *  Main Component
  */
-const PaymentSuccessScreen:PaymentSuccessScreenType = ({name, email, onClose}) => {
+const PaymentSuccessScreen:PaymentSuccessScreenType = ({name, email, close}) => {
 
     return (
         <div className={styles.wrapper}>
@@ -27,7 +27,7 @@ const PaymentSuccessScreen:PaymentSuccessScreenType = ({name, email, onClose}) =
                 <p>We will send you an email to <span className={styles.email}>{email}</span> with the details of your purchase.</p>
             </div>
             <div className={styles.footer}>
-                <button className={styles.closeButton} onClick={onClose}>Close</button>
+                <button className={styles.closeButton} onClick={() => close()}>Close</button>
             </div>
         </div>
     )

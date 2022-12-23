@@ -12,7 +12,7 @@ type usePaymentModalFunction = (setShow: (show: boolean) => void) => {
     email: string | null;
     status: statusType;
     onApprove: (name: string, email: string) => void;
-    onClose: () => void;
+    close: () => void;
 };
 
 
@@ -45,7 +45,7 @@ const usePaymentModal:usePaymentModalFunction = (setShow) => {
         setEmail(email);
     }
 
-    const onClose = () => {
+    const close = () => {
         setShow(false);
         setName(null);
         setEmail(null);
@@ -56,7 +56,7 @@ const usePaymentModal:usePaymentModalFunction = (setShow) => {
         email,
         status,
         onApprove,
-        onClose
+        close
     }
 }
 

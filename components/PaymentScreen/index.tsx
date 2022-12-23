@@ -10,7 +10,7 @@ import { PayPalButtons } from "@paypal/react-paypal-js";
 interface PaymentScreenPropsType {
     total: number | null;
     onApprove: (name: string, email: string) => void;
-    setShow: (show:boolean) => void;
+    close: () => void;
 
 } 
 
@@ -21,7 +21,7 @@ type PaymentScreenType = FunctionComponent<PaymentScreenPropsType>
 /***************************
  *  Main Component
  */
-const PaymentScreen:PaymentScreenType = ({total, onApprove, setShow}) => {
+const PaymentScreen:PaymentScreenType = ({total, onApprove, close}) => {
 
     return (
         <div className={styles.wrapper}>
@@ -59,7 +59,7 @@ const PaymentScreen:PaymentScreenType = ({total, onApprove, setShow}) => {
                             }}
 
                             onCancel={() => {
-                                setShow(false);     
+                                close();     
                             }}
                         />
             </div>
