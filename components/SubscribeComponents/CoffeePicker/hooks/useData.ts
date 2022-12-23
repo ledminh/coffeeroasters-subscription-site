@@ -40,7 +40,6 @@ const useData: useDataType = (questionsFromServer, prices) => {
     [questions[2].selectedOption]);
 
 
-
     
     /**********************************
      * Private Methods
@@ -62,6 +61,20 @@ const useData: useDataType = (questionsFromServer, prices) => {
             type: "SET_PRICES",
             prices: prices[quantityOption as "250g" | "500g" | "1000g"]
         })  
+
+        const deliveriesQuestionID = getQuestionID("Deliveries");
+        if(!deliveriesQuestionID) return;
+
+        const deliveriesQuestion = getQuestion(deliveriesQuestionID);
+        if(!deliveriesQuestion) return;
+        if(deliveriesQuestion.selectedOption === null) return;
+
+        dispatch({
+            type: "SET_SELECTED_OPTION",
+            questionID: deliveriesQuestionID,
+            optionID: deliveriesQuestion.selectedOption.id,
+            isSelecting: deliveriesQuestion.selectedOption !== null
+        })
     }
 
 

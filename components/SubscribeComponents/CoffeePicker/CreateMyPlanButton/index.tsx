@@ -27,6 +27,7 @@ type CreateMyPlanButtonType = FunctionComponent<CreateMyPlanButtonPropsType>
 const CreateMyPlanButton:CreateMyPlanButtonType = ({onClick, questions, disabled}) => {
 
     const handleClick = () => {
+        
         onClick({
             'Preferences': questions[0].selectedOption? questions[0].selectedOption.name : null,
             'Bean Type': questions[1].selectedOption? questions[1].selectedOption.name : null,
