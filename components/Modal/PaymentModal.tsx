@@ -1,10 +1,6 @@
 import { FunctionComponent } from "react";
 import styles from './PaymentModal.module.scss';
 
-import { PayPalButtons } from "@paypal/react-paypal-js";
-
-import { useState } from "react";
-
 import Modal from "./Modal";
 import PaymentScreen from "../PaymentScreen";
 import PaymentSuccessScreen from "../PaymentSuccessScreen";
@@ -28,7 +24,7 @@ const PaymentModal:PaymentModalComponent = ({show, setShow, total}) => {
 
     return (
         <Modal show={show}
-                onClose={() => setShow(false)}
+                onClose={() => status === 'init'? setShow(false): null}
             >
             <div className={styles.header}>
                 Payment
