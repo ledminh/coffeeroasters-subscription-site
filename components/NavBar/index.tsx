@@ -7,6 +7,8 @@ import useNavScreen from "./hooks/useNavScreen";
 
 import ToggleButton from "./ToggleButton";
 
+import { signIn, signOut, useSession } from 'next-auth/react';
+
 const NavBar:FunctionComponent = () => {
 
     const {navscreenIsOpen, setNavscreenIsOpen} = useNavScreen();
@@ -18,6 +20,7 @@ const NavBar:FunctionComponent = () => {
                 navscreenIsOpen={navscreenIsOpen}
                 />
             <LargeScreenNav/>
+            {/* <AuthButton/> */}
         </div>
     )
 }
@@ -49,3 +52,27 @@ const LargeScreenNav:FunctionComponent = () => (
         </ul>
     </div>
 )
+
+function AuthButton() {
+    const { data: session, status } = useSession()
+
+    return (
+        <>
+        {status === 'loading' && (
+            <div>Loading...</div>
+        )}
+        {status === 'unauthenticated' && (
+            <div>
+            Not signed in <br/>
+            <button onClick={() => signIn()}>Sign in</button>
+            </div>
+        )}
+        {status === 'authenticated' && (
+            <div>
+            Signed in as {session.user?.email} <br/>
+            <button onClick={() => signOut()}>Sign out</button>
+            </div>
+        )}
+        </>
+    )
+}
