@@ -11,10 +11,14 @@ import { QuestionType, pricesType } from '../types';
 
 import useSubscribe from '../hooks/subscribeHooks';
 
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
+
 /**********************************
  * Interface for the props object
  */
 interface SubscribeProps {
+    clientID: string,
     questionsFromServer: QuestionType[],
     prices: pricesType
 }
@@ -24,7 +28,7 @@ interface SubscribeProps {
 /**********************************
  * Subscribe page
  */
-const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer, prices}) => {
+const Subscribe:NextPage<SubscribeProps> = ({clientID, questionsFromServer, prices}) => {
     
     const {totalPrice, summary, isOrderSummaryModalShow, setIsOrderSummaryModalShow, isPaymentModalShow, setIsPaymentModalShow, onClickCreatePlan, onClickCheckout} = useSubscribe();
 
@@ -32,28 +36,34 @@ const Subscribe:NextPage<SubscribeProps> = ({questionsFromServer, prices}) => {
 
     return (
         <PageLayout>
-            <HeroImage />
-            <HowItWorks
-                showTitle={false}
-                darkTheme={true}
-                />
-            <CoffeePicker
-                questionsFromServer={questionsFromServer}
-                prices={prices}
-                onClick={onClickCreatePlan}
-                />
-            {
-                summary === null? null:   
-                <Modals 
-                    isOrderSummaryModalShow={isOrderSummaryModalShow}
-                    setIsOrderSummaryModalShow={setIsOrderSummaryModalShow}
-                    isPaymentModalShow={isPaymentModalShow}
-                    setIsPaymentModalShow={setIsPaymentModalShow}
-                    summary={summary}
-                    onClickCheckout={onClickCheckout}
-                    total={totalPrice}
-                    />
-            }
+            <PayPalScriptProvider options={{ 
+                "client-id": clientID,
+                vault: true,
+                intent: "subscription",
+                }}>
+                    <HeroImage />
+                    <HowItWorks
+                        showTitle={false}
+                        darkTheme={true}
+                        />
+                    <CoffeePicker
+                        questionsFromServer={questionsFromServer}
+                        prices={prices}
+                        onClick={onClickCreatePlan}
+                        />
+                    {
+                        summary === null? null:   
+                        <Modals 
+                            isOrderSummaryModalShow={isOrderSummaryModalShow}
+                            setIsOrderSummaryModalShow={setIsOrderSummaryModalShow}
+                            isPaymentModalShow={isPaymentModalShow}
+                            setIsPaymentModalShow={setIsPaymentModalShow}
+                            summary={summary}
+                            onClickCheckout={onClickCheckout}
+                            total={totalPrice}
+                            />
+                    }
+            </PayPalScriptProvider>
 
         </PageLayout>
     )
@@ -69,6 +79,7 @@ export default Subscribe;
 export const getServerSideProps:GetServerSideProps = async () =>{
 
 return { props: { 
+    clientID: process.env.PAYPAL_CLIENT_ID,
     questionsFromServer: [
     {
         id: 'question1',
