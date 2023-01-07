@@ -32,16 +32,41 @@
     list-style: none;
     text-align: center;
 
-    color: #333D4B;
     
     li {
         margin-bottom: 2rem;
 
-        cursor: pointer;
+        a {
+            display: block;
+            flex-basis: 100%;
+            height: 100%;
+            cursor: pointer;
 
-        &:hover {
-            color: #FDD6BA;
+            color: #333D4B;
+
+
+            &:hover {
+                color: #FDD6BA;
+            }
         }
+
+        button {
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Barlow', sans-serif;
+            color: #333D4B;
+
+            &:hover {
+                color: #FDD6BA;
+            }
+        }
+
+
     }
 
 }
