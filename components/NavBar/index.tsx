@@ -1,5 +1,7 @@
 import { FunctionComponent } from "react";
 
+import Image from "next/image";
+
 import Link from "next/link";
 import styles from './NavBar.module.scss';
 import NavScreen from "./NavScreen";
@@ -20,7 +22,6 @@ const NavBar:FunctionComponent = () => {
                 navscreenIsOpen={navscreenIsOpen}
                 />
             <LargeScreenNav/>
-            <AuthButton/>
         </div>
     )
 }
@@ -43,38 +44,45 @@ const SmallScreenNav:FunctionComponent<{setNavscreenIsOpen: (val:boolean) => voi
 )
 
 
-const LargeScreenNav:FunctionComponent = () => (
-    <div className={styles.largescreen}>
-        <ul className={styles.ul}>
-            <li><Link href="/">HOME</Link></li>
-            <li><Link href="/about">ABOUT</Link></li>
-            <li><Link href="/subscribe">CREATE YOUR PLAN</Link></li>
-        </ul>
-    </div>
-)
+const LargeScreenNav:FunctionComponent = () => {
+    
 
-function AuthButton() {
+    return (
+        <div className={styles.largescreen}>
+            <ul className={styles.ul}>
+                <li><Link href="/">HOME</Link></li>
+                <li><Link href="/about">ABOUT</Link></li>
+                <li><Link href="/subscribe">CREATE YOUR PLAN</Link></li>
+                <li><AuthButton/></li>
+            </ul>
+        </div>
+    )
+}
+
+
+const AuthButton:FunctionComponent = () => {
     const { data: session, status } = useSession()
 
-    console.log(session);
-    
+    const { user } = session || {   user: null  };
+
+
+
     return (
         <>
-        {status === 'loading' && (
-            <div>Loading...</div>
-        )}
-        {status === 'unauthenticated' && (
-            <div>
-            Not signed in <br/>
-            <button onClick={() => signIn()}>Sign in</button>
-            </div>
-        )}
-        {status === 'authenticated' && (
-            <div>
-            Signed in as {session.user?.email} <br/>
-            <button onClick={() => signOut()}>Sign out</button>
-            </div>
-        )}
+            {
+                status === 'unauthenticated' && (<button className={styles.button} onClick={() => signIn()}>LOG IN</button>)
+            }
+            {
+                status === 'authenticated' && (
+                    <>
+                        <span className={styles.userImage}>{user?.image && <Image src={user.image} alt="user image" fill />}</span>
+                        <button className={styles.button} onClick={() => signOut()}>
+                            LOG OUT
+                        </button>
+                    </>
+                )
+            }
         </>
     )
 }
+            

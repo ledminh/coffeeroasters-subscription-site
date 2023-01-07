@@ -21,11 +21,47 @@
     color: #83888F;
 
     li {
-        cursor: pointer;
 
-        &:hover {
-            color: #333D4B;
+        display: flex;
+
+        gap: 0.5rem;
+
+        a {
+            display: block;
+            flex-basis: 100%;
+            height: 100%;
+            cursor: pointer;
+
+            &:hover {
+                color: #333D4B;
+            }
         }
+
+
+        .userImage {
+            position: relative;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .button {
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Barlow', sans-serif;
+            color: #83888F;
+
+            &:hover {
+                color: #333D4B;
+            }
+        }
+
     }
 }
 
