@@ -20,7 +20,7 @@ const NavBar:FunctionComponent = () => {
                 navscreenIsOpen={navscreenIsOpen}
                 />
             <LargeScreenNav/>
-            {/* <AuthButton/> */}
+            <AuthButton/>
         </div>
     )
 }
@@ -56,6 +56,8 @@ const LargeScreenNav:FunctionComponent = () => (
 function AuthButton() {
     const { data: session, status } = useSession()
 
+    console.log(session);
+    
     return (
         <>
         {status === 'loading' && (
