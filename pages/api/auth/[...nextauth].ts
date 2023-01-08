@@ -36,21 +36,21 @@ export const authOptions:NextAuthOptions = {
     // secret: process.env.SECRET,
 
 
-    // callbacks: {
-    //     async session({ session, token, user }):Promise<SessionType> {
+    callbacks: {
+        async session({ session, token, user }):Promise<SessionType> {
             
 
-    //         return {
-    //             ...session,
-    //             user: {
-    //                 ...session.user,
-    //                 id: user.id
-    //             }
-    //         } 
-    //     }
+            return {
+                ...session,
+                user: {
+                    ...session.user,
+                    id: user.id
+                }
+            } 
+        }
 
         
-    // }
+    }
 
 
 }
