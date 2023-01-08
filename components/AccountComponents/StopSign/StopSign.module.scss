@@ -1,0 +1,84 @@
+.wrapper {
+    height: 100%;
+    max-width: 700px;
+    margin: auto;
+
+    display: flex;
+
+    align-content: center;
+
+    padding: 20px;
+
+    background-color: rgba(237, 174, 174, .5);
+    border-radius: 10px;
+
+    p {
+        line-height: 2.7;
+
+        text-align: center;
+
+    }
+
+}
+
+.loginButton {
+    padding: .2rem;
+    border: none;
+
+    // google button
+    background-color: #c2d1ea;
+    color: #000;
+    
+
+    border-radius: 5px;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    // make it one line and inlined
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    // gap between icon and text
+    gap: .5rem;
+
+    // make it align with the text
+    vertical-align: middle;
+
+    
+    
+        
+    
+
+    transition: all .2s ease-in-out;
+
+    &:hover {
+        background-color: #2f6bbd;
+    }
+
+    &:active {
+        background-color: #2f6bbd;
+    }
+
+    &:before {
+        content: "";
+        background: url(https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg);
+        margin-right: 2px;
+
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        
+
+        
+
+    }
+}

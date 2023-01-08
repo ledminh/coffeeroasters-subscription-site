@@ -1,0 +1,28 @@
+@use '../../../styles/base';
+
+.wrapper {
+    height: 100%;
+    max-width: 700px;
+    margin: auto;
+
+    display: flex;
+    flex-flow: row wrap;
+
+    align-content: center;
+
+
+    text-align: center;
+
+    color: base.$lightCream;
+
+    p {
+        flex-basis: 100%;
+        
+    }
+
+}
+
+.title {
+    margin-bottom: 1.5rem;
+    flex-basis: 100%;    
+}
