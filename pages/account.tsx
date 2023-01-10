@@ -20,7 +20,7 @@ const Account: FC<AccountProps> = () => {
 
   useEffect(() => {
     if (user) {
-      fetch('/api/get-plan', {
+      fetch('/api/get-plans', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
