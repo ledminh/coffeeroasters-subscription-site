@@ -75,7 +75,11 @@ const AuthButton:FunctionComponent = () => {
             {
                 status === 'authenticated' && (
                     <>
-                        <span className={styles.userImage}>{user?.image && <Image src={user.image} alt="user image" fill />}</span>
+                        <span className={styles.userImage}>
+                            <Link href="/account">
+                                {user?.image && <Image src={user.image} alt="user image" fill />}
+                            </Link>
+                        </span>
                         <button className={styles.button} onClick={() => signOut()}>
                             LOG OUT
                         </button>

@@ -44,6 +44,10 @@
             height: 1.5rem;
             border-radius: 50%;
             overflow: hidden;
+
+            &:hover {
+                box-shadow: 0 0 2px 1px #333D4B;
+            }
         }
 
         .button {
