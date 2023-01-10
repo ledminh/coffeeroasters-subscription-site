@@ -1,3 +1,4 @@
+import { SummaryType } from "../../types";
 import clientPromise from "./mongodb";
 
 
@@ -13,50 +14,21 @@ async function getCollection(dbName:string, collectionName:string) {
     return db.collection(collectionName);
 }   
 
-export async function insertOne(dbName:string, collectionName:string, document:any) {
-    const collection = await getCollection(dbName, collectionName);
-    return collection.insertOne(document);
+export async function getPlans(userId:string):Promise<SummaryType[]> {
+    const plansCollection = await getCollection("coffee_roaster", "user_plans");
+
+    if(!plansCollection) {
+        return [];
+    }
+
+    const plans = await plansCollection.findOne({userId});
+
+    if(!plans) {
+        return [];
+    }
+
+
+
+    return plans.plans as SummaryType[];
+
 }
-
-export async function insertMany(dbName:string, collectionName:string, documents:any[]) {
-    const collection = await getCollection(dbName, collectionName);
-    return collection.insertMany(documents);
-}
-
-export async function findOne(dbName:string, collectionName:string, filter:any) {
-    const collection = await getCollection(dbName, collectionName);
-    return collection
-        .findOne(filter);
-}
-
-export async function findMany(dbName:string, collectionName:string, filter:any) {
-    const collection = await getCollection(dbName, collectionName);
-    return collection
-        .find(filter)
-        .toArray();
-}
-
-export async function updateOne(dbName:string, collectionName:string, filter:any, update:any) {
-    const collection = await getCollection(dbName, collectionName);
-    return collection.updateOne(filter, update);
-}
-
-export async function updateMany(dbName:string, collectionName:string, filter:any, update:any) {
-    const collection = await getCollection(dbName, collectionName);
-    return collection.updateMany(filter, update);
-}
-
-export async function deleteOne(dbName:string, collectionName:string, filter:any) {
-    const collection = await getCollection(dbName, collectionName);
-    return collection.deleteOne(filter
-    );
-}
-
-export async function deleteMany(dbName:string, collectionName:string, filter:any) {
-    const collection = await getCollection(dbName, collectionName);
-    return collection.deleteMany(filter);
-}
-
-
-
-

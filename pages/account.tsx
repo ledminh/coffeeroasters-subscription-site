@@ -16,7 +16,7 @@ const Account: FC<AccountProps> = () => {
 
   const {user} = session || {user: null};
   
-  const [plans, setPlans] = useState<SummaryType[]>([]);
+  const [plans, setPlans] = useState<SummaryType[]|null>(null);
 
   useEffect(() => {
     if (user) {
@@ -30,6 +30,7 @@ const Account: FC<AccountProps> = () => {
           })
         }).then((res) => res.json())
         .then(({plans}) => {
+          
           setPlans(plans);
         })
     }
@@ -40,7 +41,7 @@ const Account: FC<AccountProps> = () => {
       <HeroImage/>
       { !user && <StopSign/> }
       {
-        user && (
+        user && plans && (
           <PlanList
             plans={plans}
           />
