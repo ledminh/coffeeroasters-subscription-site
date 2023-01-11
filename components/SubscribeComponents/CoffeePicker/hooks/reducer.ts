@@ -4,6 +4,9 @@ import { QuestionDataType } from "../../../../types";
 
 export default function reducer (state:QuestionDataType[], action:actionType) {
     switch(action.type) {
+        case "SET_QUESTIONS":
+            return action.questions;
+            
         case "SET_STATUS":
 
             return state.map((question) => {
@@ -85,4 +88,7 @@ type actionType = {
 } | {
     type: "SET_PRICES",
     prices: number[]
+} | {
+    type: "SET_QUESTIONS",
+    questions: QuestionDataType[]
 }

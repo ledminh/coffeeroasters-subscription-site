@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import reducer from "./reducer";
 import { addStatus, addSeclectedOption, addPrice } from "./transformers"
 
@@ -30,6 +30,8 @@ const useData: useDataType = (questionsFromServer, prices) => {
 
     const [questions, dispatch] = useReducer(reducer, processedQuestions);
 
+    const [init, setInit] = useState(false);
+
 
     useEffect(() => disableGrindWhenCapsuleSelected()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -38,6 +40,35 @@ const useData: useDataType = (questionsFromServer, prices) => {
     useEffect(() => upadatePriceWhenQuantityChanges(),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [questions[2].selectedOption]);
+
+
+    // save questions to local storage
+    useEffect(() => {
+        if(init) {
+            localStorage.setItem("questions", JSON.stringify(questions));
+            
+        }
+        else {
+            setInit(true);
+        }
+        
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [questions]);
+
+    // retrieve questions from local storage
+    useEffect(() => {
+        const questionsFromLocalStorage = localStorage.getItem("questions");
+        if(!questionsFromLocalStorage) return;
+
+        const parsedQuestions = JSON.parse(questionsFromLocalStorage);
+        
+
+        dispatch({
+            type: "SET_QUESTIONS",
+            questions: parsedQuestions
+        })
+    }, []);
+
 
 
     
