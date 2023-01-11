@@ -4,6 +4,7 @@ import { addStatus, addSeclectedOption, addPrice } from "./transformers"
 
 import { QuestionDataType, QuestionType, pricesType, navNameType } from "../../../../types";
 
+import {useSession} from 'next-auth/react';
 
 /**********************************
  *  Types/Interfaces
@@ -31,6 +32,20 @@ const useData: useDataType = (questionsFromServer, prices) => {
     const [questions, dispatch] = useReducer(reducer, processedQuestions);
 
     const [init, setInit] = useState(false);
+
+    const {data: session} = useSession();
+
+    // reset questions when user logs out
+    useEffect(() => {
+        if(!session) {
+            dispatch({
+                type: "SET_QUESTIONS",
+                questions: processedQuestions
+            })
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [session])
+
 
 
     useEffect(() => disableGrindWhenCapsuleSelected()
