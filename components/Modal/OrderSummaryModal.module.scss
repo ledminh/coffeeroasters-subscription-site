@@ -16,6 +16,10 @@
 
 .body {
     padding: 40px 24px 24px;
+
+    p {
+        margin-bottom: 1rem;
+    }
 }
 
 .quote {
@@ -55,19 +59,81 @@
     font-family: 'Fraunces', serif;
     font-size: 1.125rem;
     font-weight: 900;
-    color: #FEFCF7;
-    background-color: #0E8784;
+  
     border-radius: 6px;
 
     cursor:pointer;
 
     border: none;
 
+    
+    
+}
+
+.notLoggedInPrompt {
+    // warning color
+    color: #805b15;
+    font-family: 'Fraunces', serif;
+    
+
+    border-radius: 8px;
+
+    
+}
+
+.loggedInPrompt .email {
+    display: inline-block;
+    color: #0E8784;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    &::after {
+        content: '';
+
+        display: block;
+        width: 100%;
+        height: 2px;
+
+        background-color: white;
+
+    }
+
+
+    &:hover {
+        
+        &::after {
+            background-color: #45908d;
+        }
+    }
+}
+
+.checkout.button {
+    color: #FEFCF7;
+    background-color: #0E8784;
+  
     &:hover {
         background-color: #66D2CF;
     }
+}
+
+
+// google style login button
+.login.button {
+    // google color theme
+    background-color: #4285F4;
+    color: #FEFCF7;
+
+    &:hover {
+        background-color: #2f5fae;
+    }
+
+
     
 }
+
+
 
 @media (min-width: 768px) {
     .header {
