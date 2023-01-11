@@ -2,6 +2,8 @@ import { FunctionComponent } from "react";
 
 import styles from './PaymentSuccessScreen.module.scss';
 
+import { useRouter } from "next/router";
+
 /***************************
  *  Types
  */
@@ -20,6 +22,8 @@ type PaymentSuccessScreenType = FunctionComponent<PaymentSuccessScreenPropsType>
  */
 const PaymentSuccessScreen:PaymentSuccessScreenType = ({name, email, close}) => {
 
+    const router = useRouter();
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.body}>
@@ -27,7 +31,11 @@ const PaymentSuccessScreen:PaymentSuccessScreenType = ({name, email, close}) => 
                 <p>We will send you an email to <span className={styles.email}>{email}</span> with the details of your purchase.</p>
             </div>
             <div className={styles.footer}>
-                <button className={styles.closeButton} onClick={() => close()}>Close</button>
+                <button className={styles.closeButton} onClick={() => {
+                    close();
+                    router.push('/account');
+
+                }}>Close</button>
             </div>
         </div>
     )
